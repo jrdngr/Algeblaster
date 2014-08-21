@@ -1,0 +1,9 @@
+C:\Users\jordan\SkyDrive\Documents\Unity Projects\Algeblaster\Temp\UnityVS_bin\Debug\Assembly-CSharp.dll
+C:\Users\jordan\SkyDrive\Documents\Unity Projects\Algeblaster\Temp\UnityVS_bin\Debug\Assembly-CSharp.pdb
+C:\Users\jordan\SkyDrive\Documents\Unity Projects\Algeblaster\Temp\UnityVS_bin\Debug\UnityEditor.dll
+C:\Users\jordan\SkyDrive\Documents\Unity Projects\Algeblaster\Temp\UnityVS_bin\Debug\UnityEngine.dll
+C:\Users\jordan\SkyDrive\Documents\Unity Projects\Algeblaster\Temp\UnityVS_bin\Debug\UnityEngine.xml
+C:\Users\jordan\SkyDrive\Documents\Unity Projects\Algeblaster\Temp\UnityVS_bin\Debug\UnityEditor.xml
+C:\Users\jordan\SkyDrive\Documents\Unity Projects\Algeblaster\obj\Debug\UnityVS.Algeblaster.CSharp.csprojResolveAssemblyReference.cache
+C:\Users\jordan\SkyDrive\Documents\Unity Projects\Algeblaster\obj\Debug\Assembly-CSharp.dll
+C:\Users\jordan\SkyDrive\Documents\Unity Projects\Algeblaster\obj\Debug\Assembly-CSharp.pdb
