@@ -1,0 +1,215 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &100000
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 400000}
+  - 114: {fileID: 11400004}
+  - 114: {fileID: 11400002}
+  - 114: {fileID: 11400000}
+  - 114: {fileID: 11400006}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Game Manager
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &100002
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 400002}
+  - 114: {fileID: 11400008}
+  m_Layer: 0
+  m_Name: Level1
+  m_TagString: Level
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &400000
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 400002}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!4 &400002
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100002}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -2.79726124, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 400000}
+  m_RootOrder: 0
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fc36929bbfad98479946bec80352092, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxSpeed: 8
+  dashForce: 60
+  dashTime: .100000001
+  dashDelay: .5
+  thrustForce: 100
+  dashEffect: {fileID: 100000, guid: 0903a5996dcffc843acac83dd8b7a982, type: 2}
+  bumpForce: 10
+  bumpTime: .100000001
+  bumpEffect: {fileID: 100000, guid: 873807c2ace610f46bb4cc3b3215f5bf, type: 2}
+  juiceCost: 2
+  juiceDrainTickTime: .0199999996
+  emptyJuiceDelay: 1
+  maxHitpoints: 100
+  bumpDamage: 25
+  playerDeathEffect: {fileID: 100002, guid: 4209f534fd4c6154cbf7cc24cbda1bd1, type: 2}
+  healthBar: {fileID: 0}
+  maxJuice: 100
+  juiceRefillSpeed: .0199999996
+  juiceBar: {fileID: 0}
+  frequencyDisplay: {fileID: 0}
+  weaponDisplay: {fileID: 0}
+  hasPositron: 1
+  hasNegatron: 1
+  hasDisintegrator: 1
+  hasMultizapper: 0
+  hasFactorBeam: 0
+  frequencyMode: 3
+  credits: 1
+  hasShieldMagnet: 1
+  shieldMagnetForce: 100
+  shieldMagnetRadius: 5
+--- !u!114 &11400002
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49942959de390fa4e8b170d679fb737f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bounds:
+    serializedVersion: 2
+    x: -17.7000008
+    y: -6.0999999
+    width: 35.5
+    height: 19.7099991
+  playerBounds:
+    serializedVersion: 2
+    x: -16.7399998
+    y: -3.57999992
+    width: 30.2999992
+    height: 16
+--- !u!114 &11400004
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 897cd2e5e54e60b44add3739aafc3061, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerDead: 0
+--- !u!114 &11400006
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fb54d8b4128f444e925ac6d019d1b5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  positronGun: {fileID: 100002, guid: b44bed6a232814a4ca028b232700e1b3, type: 2}
+  positronDamage: 10
+  positronFireDelay: .200000003
+  positronProjectileSpeed: 15
+  positronProjectile: {fileID: 100000, guid: f2334b2d144a7454c8244bf3547eb189, type: 2}
+  positronHitEffect: {fileID: 100000, guid: bef44414f167af84c9937745074620e1, type: 2}
+  positronHasSpread: 1
+  positronNumberOfBullets: 5
+  positronTwoBulletsSpawnOffset: .200000003
+  positronSpreadAngle: 10
+  negatronGun: {fileID: 100002, guid: a7d8b9318a7c2734696f3c58e66d610d, type: 2}
+  negatronDamage: 30
+  negatronFireDelay: .800000012
+  negatronProjectileSpeed: 7
+  negatronProjectile: {fileID: 100002, guid: 7e3e58aaa8b1988408677d0d560842ce, type: 2}
+  negatronHitEffect: {fileID: 100002, guid: d481100e7ecacf34f934b2fa919314ee, type: 2}
+  negatronShape: 0
+  disintegrator: {fileID: 100004, guid: ec93b85eaee7b89488a9f63e9dab1133, type: 2}
+  disintegratorDamage: 100
+  disintegratorFireDelay: 1.5
+  disintegratorProjectileSpeed: 1
+  disintegratorProjectile: {fileID: 100004, guid: 291997e05d4388c4cae766fd622286c5,
+    type: 2}
+  disintegratorHitEffect: {fileID: 100002, guid: 4209f534fd4c6154cbf7cc24cbda1bd1,
+    type: 2}
+  disintegratorAcceleration: 20
+  disintegratorHoming: 0
+  disintegratorBlastRadius: 2
+  multizapper: {fileID: 0}
+  multizapperDamage: 0
+  multizapperFireDelay: 0
+  multizapperHitEffect: {fileID: 0}
+  factorBeam: {fileID: 0}
+  factorBeamDamage: 0
+  factorBeamFireDelay: 0
+  factorBeamHitEffect: {fileID: 0}
+--- !u!114 &11400008
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58e4c59ba6ee2af45a48b7b756beee7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasMothership: 0
+  mothershipEquation: n+x-n
+  experienceReward: 300
+  waveList:
+  - EnemyList:
+    - ot025
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 100000}
+  m_IsPrefabParent: 1
+  m_IsExploded: 1

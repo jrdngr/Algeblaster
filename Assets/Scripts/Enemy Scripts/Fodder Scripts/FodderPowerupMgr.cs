@@ -8,16 +8,11 @@ public class FodderPowerupMgr : MonoBehaviour {
     [SerializeField] private float spawnDistanceFromCenter = 0.5f;
     [SerializeField] private int minHealth = 0;
     [SerializeField] private int maxHealth = 4;
-    [SerializeField] private int minExp = 2;
-    [SerializeField] private int maxExp = 20;
-    
     
     private GameObject healthOrbPrefab;
-    private GameObject expOrbPrefab;
 
     void Awake() {
         healthOrbPrefab = (GameObject)Resources.Load("Pickups/HealthOrb");
-        expOrbPrefab = (GameObject)Resources.Load("Pickups/ExpOrb");
     }
 
     public void SpawnOrbs(Vector3 pos, int modifier) {
@@ -28,16 +23,10 @@ public class FodderPowerupMgr : MonoBehaviour {
             float hoY = Random.Range(-spawnDistanceFromCenter, spawnDistanceFromCenter);
             Instantiate(healthOrbPrefab, new Vector3(pos.x + hoX, pos.y + hoY, 0), Quaternion.identity);
         }
-        //Exp
-        int numberOfExpOrbs = Random.Range(minExp, maxExp) * modifier;
-        for (int i = 0; i < numberOfExpOrbs; i++) {
-            float hoX = Random.Range(-0.5f, 0.5f);
-            float hoY = Random.Range(-0.5f, 0.5f);
-            Instantiate(expOrbPrefab, new Vector3(pos.x + hoX, pos.y + hoY, 0), Quaternion.identity);
-        }
+
         Collider[] colliders = Physics.OverlapSphere(pos, explosionRadius);
         foreach (Collider c in colliders) {
-            if (c.rigidbody && (c.rigidbody.CompareTag("HealthOrb") || c.rigidbody.CompareTag("ExpOrb"))) {
+            if (c.rigidbody && c.rigidbody.CompareTag("HealthOrb")) {
                 c.rigidbody.AddExplosionForce(explosionForce, pos, explosionRadius, 0, ForceMode.Force);
             }
         }

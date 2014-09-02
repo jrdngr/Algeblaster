@@ -28,11 +28,11 @@ public class EnemyWeapon : MonoBehaviour {
         }
     }
 
-    protected void Start() {
+    protected virtual void Start() {
         startPos = transform.position;
     }
 
-    protected void Update() {
+    protected virtual void Update() {
         if ((transform.position - startPos).magnitude >= travelDistance)
             Destroy(this.gameObject);
     }

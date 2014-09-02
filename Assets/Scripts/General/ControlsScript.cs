@@ -8,6 +8,6 @@ public class ControlsScript : MonoBehaviour {
 
 	void Update () {
 		if (Input.GetButtonDown ("Fire1"))
-			Application.LoadLevel ("Mothership Test Area");
+			Application.LoadLevel ("TestLevel1");
 	}
 }

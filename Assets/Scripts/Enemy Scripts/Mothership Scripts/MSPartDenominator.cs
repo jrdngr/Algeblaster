@@ -17,12 +17,12 @@ public class MSPartDenominator : MothershipPart {
     }
 
     private int myValue;
-    private CodeMgr codeMgr;
+    private CodeManager codeMgr;
 
     void Awake() {
         base.Awake();
         healthMgr = GetComponent<EnemyHealthManager>();
-        codeMgr = msCode.GetComponent<CodeMgr>();
+        codeMgr = msCode.GetComponent<CodeManager>();
         myValue = Random.Range(2, 9);
         numberLabel.text = myValue.ToString();
     }
@@ -32,7 +32,7 @@ public class MSPartDenominator : MothershipPart {
     }
 
     public void GotHit(WeaponHit hit) {
-        if (hit.type == Weapon.WeaponType.mult && hit.frequency == myValue) {
+        if (hit.type == WeaponHit.WeaponType.mult && hit.frequency == myValue) {
             healthMgr.SubtractHP(hit.damage);
             if (healthMgr.CurrentHP <= 0) {
                 codeMgr.MultiplyValue(myValue);

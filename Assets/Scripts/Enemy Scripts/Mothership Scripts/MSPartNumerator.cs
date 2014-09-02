@@ -20,7 +20,7 @@ public class MSPartNumerator : MothershipPart {
     private bool inFactor = false;
     private bool berserkTickReady = true;
     private Color startColor;
-    private CodeMgr codeMgr;
+    private CodeManager codeMgr;
     private GameObject poweredObject;
     private Timer berserkTimer;
 
@@ -77,7 +77,7 @@ public class MSPartNumerator : MothershipPart {
 
     new void Start() {
         base.Start();
-        codeMgr = msCode.GetComponent<CodeMgr>();
+        codeMgr = msCode.GetComponent<CodeManager>();
         numberLabel.text = myValue.ToString();
         CheckPositive();
         if (!inFactor) {
@@ -163,14 +163,14 @@ public class MSPartNumerator : MothershipPart {
         if (!isBerserk) {
             healthMgr.SubtractHP(weaponHit.damage);
             if (healthMgr.CurrentHP <= 0) {
-                if (weaponHit.type == Weapon.WeaponType.pos) {
+                if (weaponHit.type == WeaponHit.WeaponType.pos) {
                     if (isPositive)
                         myValue = myValue + weaponHit.frequency;
                     else
                         myValue = myValue - weaponHit.frequency;
                     codeMgr.AddValue (weaponHit.frequency);
                 }
-                else if (weaponHit.type == Weapon.WeaponType.neg) {
+                else if (weaponHit.type == WeaponHit.WeaponType.neg) {
                     if (isPositive)
                         myValue = myValue - weaponHit.frequency;
                     else

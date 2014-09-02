@@ -3,24 +3,21 @@
 --- !u!78 &1
 TagManager:
   tags:
-  - 
-  - WeaponFire
-  - 
-  - Shield
-  - Mothership
-  - God
-  - ExpOrb
+  - Game Manager
+  - Anchor
+  - Fodder
   - Minion
+  - Mothership
+  - Shield
+  - MSAnchor
+  - HealthOrb
   - Sensor
   - EnemyWeaponFire
-  - HealthOrb
   - EnemyShield
   - SecretCode
   - Effects
-  - Fodder
   - Level
-  - 
-  - MSAnchor
+  - WeaponFire
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX
@@ -39,7 +36,7 @@ TagManager:
   User Layer 14: Anchor
   User Layer 15: Effects
   User Layer 16: Fodder
-  User Layer 17: 
+  User Layer 17: Shield
   User Layer 18: 
   User Layer 19: 
   User Layer 20: 

@@ -7,7 +7,7 @@ public class MSPartDivide : MonoBehaviour {
     [SerializeField] private TextMesh numberLabel;
 
     private int myFactor;
-    private CodeMgr codeMgr;
+    private CodeManager codeMgr;
 
     public int MyFactor {
         get{
@@ -19,7 +19,7 @@ public class MSPartDivide : MonoBehaviour {
     }
 
     void Awake() {
-        codeMgr = GameObject.FindGameObjectWithTag("SecretCode").GetComponent<CodeMgr>();
+        codeMgr = GameObject.FindGameObjectWithTag("SecretCode").GetComponent<CodeManager>();
         myFactor = Random.Range(2, 9);
         numberLabel.fontSize = 80;
     }
@@ -41,7 +41,7 @@ public class MSPartDivide : MonoBehaviour {
     }
 
     public void GotHit(WeaponHit weaponHit) {
-        if (weaponHit.type == Weapon.WeaponType.div && weaponHit.frequency == myFactor) {
+        if (weaponHit.type == WeaponHit.WeaponType.div && weaponHit.frequency == myFactor) {
             if (codeMgr.MyDenominator == 1)
                 codeMgr.MyDenominator = myFactor;
             else

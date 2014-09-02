@@ -16,7 +16,7 @@ public class ChooMove : MonoBehaviour {
     void Start() {
         god = GameObject.FindGameObjectWithTag("God");
         myVars = GetComponent<ChooChoo>();
-        MyBounds = god.GetComponent<God>().bounds;
+        MyBounds = god.GetComponent<LevelManager>().bounds;
         thrustForce = myVars.ThrustForce;
         maxSpeed = myVars.MaxSpeed;
         moveAngle = myVars.MoveAngle * pi / 180f;

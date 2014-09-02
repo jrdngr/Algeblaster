@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 // Script for a health orb
@@ -16,7 +16,7 @@ public class HealthOrb : Pickup {
 
 
 	void FixedUpdate(){
-		rigidbody.velocity = new Vector3(Mathf.Clamp(rigidbody.velocity.x, -maxSpeed, maxSpeed), Mathf.Clamp(rigidbody.velocity.y, -maxSpeed, maxSpeed),0);
+	//	rigidbody.velocity = new Vector3(Mathf.Clamp(rigidbody.velocity.x, -maxSpeed, maxSpeed), Mathf.Clamp(rigidbody.velocity.y, -maxSpeed, maxSpeed),0);
 		if (rigidbody.velocity.y > -maxSpeed)
 			rigidbody.AddForce(new Vector3(0, -moveForce, 0));
 		if (transform.position.x >= xMax || transform.position.x <= xMin)
@@ -24,8 +24,8 @@ public class HealthOrb : Pickup {
 	}
 
 	void OnTriggerEnter(Collider other){
-		if (other.CompareTag("Player")){
-			other.GetComponent<pHealthMgr>().Heal (value);
+        if (other.CompareTag("Player")){
+			other.transform.parent.GetComponent<playerHealthManager>().Heal (value);
 			GameObject got = (GameObject)Instantiate(powerupGot, transform.position, Quaternion.identity);
 			Destroy(got, 2);
 			Destroy (this.gameObject);

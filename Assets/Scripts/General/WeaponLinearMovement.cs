@@ -10,6 +10,7 @@ public class WeaponLinearMovement : MonoBehaviour {
     [SerializeField] private float distanceBeforeDestroyed;
     [SerializeField] private float yMax;
 
+
     private float startPos;
     private float distance;
 

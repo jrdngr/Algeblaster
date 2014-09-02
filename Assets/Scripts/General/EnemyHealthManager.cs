@@ -12,7 +12,7 @@ public class EnemyHealthManager : MonoBehaviour {
     
     private int currentHP;
     private int lastHitFreq;
-    private Weapon.WeaponType lastHitType;
+    private WeaponHit.WeaponType lastHitType;
 
     public int MaxHP {
         get {

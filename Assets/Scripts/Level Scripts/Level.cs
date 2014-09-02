@@ -15,14 +15,14 @@ public class Level : MonoBehaviour {
     private bool spawnedMothership = false;
     private List<GameObject> currentWaveEnemies = new List<GameObject>();
 
-    private God god;
+    private LevelManager levelManager;
     private GameObject orbiterPrefab;
     private GameObject choochooPrefab;
     private GameObject pfmPrefab;
     private GameObject mothershipPrefab;
 
     void Start() {
-        god = GameObject.FindGameObjectWithTag("God").GetComponent<God>();
+        levelManager = GameObject.FindGameObjectWithTag("Game Manager").GetComponent<LevelManager>();
         orbiterPrefab = (GameObject)Resources.Load("Enemies/Fodder/Orbiter");
         choochooPrefab = (GameObject)Resources.Load("Enemies/Fodder/ChooChoo");
         pfmPrefab = (GameObject)Resources.Load("Enemies/Minions/PrimeFactorMinion");
@@ -47,7 +47,7 @@ public class Level : MonoBehaviour {
 			spawnedWave = false;
 		}
         if (currentWave >= waveList.Count && hasMothership && !spawnedMothership) {
-            GameObject ms = (GameObject)Instantiate(mothershipPrefab, new Vector3(0, god.bounds.yMax, 0), Quaternion.identity);
+            GameObject ms = (GameObject)Instantiate(mothershipPrefab, new Vector3(0, levelManager.bounds.yMax, 0), Quaternion.identity);
             ms.GetComponent<Mothership>().Equation = mothershipEquation;
             spawnedMothership = true;
         }
@@ -76,19 +76,19 @@ public class Level : MonoBehaviour {
 
         switch(input[1]){
             case 't':
-                spawnPosition = new Vector3(god.bounds.xMin + (god.bounds.width * myDistance), god.bounds.yMax, 0);
+                spawnPosition = new Vector3(levelManager.bounds.xMin + (levelManager.bounds.width * myDistance), levelManager.bounds.yMax, 0);
                 break;
             case 'b':
-                spawnPosition = new Vector3(god.bounds.xMin + (god.bounds.width * myDistance), god.bounds.yMin, 0);
+                spawnPosition = new Vector3(levelManager.bounds.xMin + (levelManager.bounds.width * myDistance), levelManager.bounds.yMin, 0);
                 break;
             case 'l':
-                spawnPosition = new Vector3(god.bounds.xMin, god.bounds.yMin + (god.bounds.height * myDistance), 0);
+                spawnPosition = new Vector3(levelManager.bounds.xMin, levelManager.bounds.yMin + (levelManager.bounds.height * myDistance), 0);
                 break;
             case 'r':
-                spawnPosition = new Vector3(god.bounds.xMax, god.bounds.yMin + (god.bounds.height * myDistance), 0);
+                spawnPosition = new Vector3(levelManager.bounds.xMax, levelManager.bounds.yMin + (levelManager.bounds.height * myDistance), 0);
                 break;
             default:
-                spawnPosition = new Vector3((god.bounds.xMax - god.bounds.xMin) * myDistance, god.bounds.yMax, 0);
+                spawnPosition = new Vector3((levelManager.bounds.xMax - levelManager.bounds.xMin) * myDistance, levelManager.bounds.yMax, 0);
                 break;
         }
 

@@ -17,7 +17,7 @@ public class MSPartFactor : MothershipPart {
 
     private int myFactor;
     private bool factorActive = false;
-    private CodeMgr codeMgr;
+    private CodeManager codeMgr;
 
     public int MyFactor {
         get {
@@ -44,7 +44,7 @@ public class MSPartFactor : MothershipPart {
 
     void Start() {
         base.Start();
-        codeMgr = GameObject.FindGameObjectWithTag("SecretCode").GetComponent<CodeMgr>();  //THIS IS BAD.  IT SHOULD INHERIT AN MSCODE.  FIX IT
+        codeMgr = GameObject.FindGameObjectWithTag("SecretCode").GetComponent<CodeManager>();  //THIS IS BAD.  IT SHOULD INHERIT AN MSCODE.  FIX IT
         myCore.GetComponent<MSPartDivide>().MyFactor *= myFactor;
         myNumber.GetComponent<MSPartNumerator>().MyValue *= myFactor;
         myNumber.GetComponent<MSPartNumerator>().PoweredObject = myOperator;
@@ -92,7 +92,7 @@ public class MSPartFactor : MothershipPart {
     }
 
     public void GotHit(WeaponHit weaponHit) {
-        if (factorActive && weaponHit.type == Weapon.WeaponType.div && weaponHit.frequency == myFactor) {
+        if (factorActive && weaponHit.type == WeaponHit.WeaponType.div && weaponHit.frequency == myFactor) {
             if (codeMgr.MyDenominator == 1)
                 codeMgr.MyDenominator = myFactor;
             else

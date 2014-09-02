@@ -204,7 +204,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thrustForce: 10
-  maxSpeed: 8
+  maxSpeed: 4
   deathEffect: {fileID: 100002, guid: 4209f534fd4c6154cbf7cc24cbda1bd1, type: 2}
 --- !u!114 &11400002
 MonoBehaviour:
@@ -274,10 +274,8 @@ MonoBehaviour:
   explosionRadius: 1
   explosionForce: 1000
   spawnDistanceFromCenter: .5
-  minHealth: 0
-  maxHealth: 4
-  minExp: 5
-  maxExp: 5
+  minHealth: 3
+  maxHealth: 5
 --- !u!135 &13500000
 SphereCollider:
   m_ObjectHideFlags: 1

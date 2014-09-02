@@ -12,11 +12,11 @@ public class Pickup : MonoBehaviour {
 	[SerializeField] protected float xMin;
 	[SerializeField] protected int value;
 	[SerializeField] protected GameObject powerupGot;
-	[SerializeField] protected GameObject player;
+	[SerializeField] protected LevelManager levelManager;
 
 	void Start(){
-		player = GameObject.FindGameObjectWithTag("Player");
-		xMax = player.GetComponent<pMoveMgr>().XMax;
-		xMin = player.GetComponent<pMoveMgr>().XMin;
+		levelManager = GameObject.FindGameObjectWithTag("Game Manager").GetComponent<LevelManager>();
+		xMax = levelManager.playerBounds.xMax;
+		xMin = levelManager.playerBounds.xMin;
 	}
 }

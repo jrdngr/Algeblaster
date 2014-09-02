@@ -27,7 +27,7 @@ public class MSFactorShield : MonoBehaviour {
     }
 
     public void GotHit(WeaponHit weaponHit) {
-        if (weaponHit.type == Weapon.WeaponType.fac) {
+        if (weaponHit.type == WeaponHit.WeaponType.fac) {
             if ((float)coreFactor % (float)weaponHit.frequency == 0f && (float)termNumber % (float)weaponHit.frequency == 0f) {
                 healthMgr.CurrentHP -= weaponHit.damage;
                 if (healthMgr.CurrentHP <= 0){

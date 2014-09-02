@@ -6,6 +6,10 @@ public class Timer : MonoBehaviour{
     public delegate void ManageTimer();
     public event ManageTimer Trigger;
 
+    private bool running = false;
+    public bool Running {
+        get { return running; }
+    }
     private float duration;
     private int repeat;
     private int iteration;
@@ -34,18 +38,22 @@ public class Timer : MonoBehaviour{
 
     public void Cancel() {
         StopAllCoroutines();
+        running = false;
     }
 
     //Restarts the timer with the same settings
     public void Reset() {
         StopAllCoroutines();
+        running = false;
         iteration = 0;
         StartCoroutine("RunTimer");
     }
 
     IEnumerator RunTimer() {
+        running = true;
         yield return new WaitForSeconds(duration);
         Trigger();
+        running = false;
         iteration++;
         if (iteration < repeat)
             StartCoroutine("RunTimer");

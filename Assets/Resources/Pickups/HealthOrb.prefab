@@ -63,9 +63,9 @@ MonoBehaviour:
   moveForce: 10
   xMax: 0
   xMin: 0
-  value: 5
+  value: 2
   powerupGot: {fileID: 100000, guid: 2d63aea5f12b8b343887aa77261caf6d, type: 2}
-  player: {fileID: 0}
+  levelManager: {fileID: 0}
 --- !u!135 &13500000
 SphereCollider:
   m_ObjectHideFlags: 1
