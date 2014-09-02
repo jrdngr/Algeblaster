@@ -8,15 +8,15 @@ public class ChooMove : MonoBehaviour {
     private float moveAngle;
     private Vector3 myDirection;
     private ChooChoo myVars;
-    private GameObject god;
+    private LevelManager levelManager;
     private const float pi = Mathf.PI;
 
     public Rect MyBounds { get; set; }
 
     void Start() {
-        god = GameObject.FindGameObjectWithTag("God");
+        levelManager = GameObject.FindGameObjectWithTag("Game Manager").GetComponent<LevelManager>();
         myVars = GetComponent<ChooChoo>();
-        MyBounds = god.GetComponent<LevelManager>().bounds;
+        MyBounds = levelManager.bounds;
         thrustForce = myVars.ThrustForce;
         maxSpeed = myVars.MaxSpeed;
         moveAngle = myVars.MoveAngle * pi / 180f;

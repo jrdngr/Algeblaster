@@ -75,6 +75,7 @@ MonoBehaviour:
   dashForce: 60
   dashTime: .100000001
   dashDelay: .5
+  dashDoubleTapDelay: .200000003
   thrustForce: 100
   dashEffect: {fileID: 100000, guid: 0903a5996dcffc843acac83dd8b7a982, type: 2}
   bumpForce: 10
@@ -95,7 +96,7 @@ MonoBehaviour:
   hasPositron: 1
   hasNegatron: 1
   hasDisintegrator: 1
-  hasMultizapper: 0
+  hasMultizapper: 1
   hasFactorBeam: 0
   frequencyMode: 3
   credits: 1
@@ -154,8 +155,8 @@ MonoBehaviour:
   positronProjectileSpeed: 15
   positronProjectile: {fileID: 100000, guid: f2334b2d144a7454c8244bf3547eb189, type: 2}
   positronHitEffect: {fileID: 100000, guid: bef44414f167af84c9937745074620e1, type: 2}
-  positronHasSpread: 1
-  positronNumberOfBullets: 5
+  positronHasSpread: 0
+  positronNumberOfBullets: 2
   positronTwoBulletsSpawnOffset: .200000003
   positronSpreadAngle: 10
   negatronGun: {fileID: 100002, guid: a7d8b9318a7c2734696f3c58e66d610d, type: 2}
@@ -176,14 +177,26 @@ MonoBehaviour:
   disintegratorAcceleration: 20
   disintegratorHoming: 0
   disintegratorBlastRadius: 2
-  multizapper: {fileID: 0}
-  multizapperDamage: 0
-  multizapperFireDelay: 0
-  multizapperHitEffect: {fileID: 0}
+  multizapper: {fileID: 100000, guid: 9ecd60ea8fecce946a78a76785a3b86f, type: 2}
+  multizapperFireDelay: 1
+  multizapperHitEffect: {fileID: 100000, guid: e880dab445df3d942aeb9826df4dcc7d, type: 2}
+  multizapperBall: {fileID: 100002, guid: 2527c389ec07b9f439878d9b3f74714a, type: 2}
+  multizapperZap: {fileID: 100000, guid: 43482cd9af5c4454d95677b5d81e4229, type: 2}
+  multizapperBallSpeed: 3
+  multizapperBallDamage: 50
+  multizapperZapRange: 5
+  multizapperZapSpeed: 10
+  multizapperZapDamage: 25
+  multizapperChainRange: 4
+  multizapperNumberOfChains: 2
+  multizapperHasTether: 0
   factorBeam: {fileID: 0}
   factorBeamDamage: 0
   factorBeamFireDelay: 0
   factorBeamHitEffect: {fileID: 0}
+  factorBeamProjectile: {fileID: 0}
+  factorBeamProjectileSpeed: 0
+  factorBeamHasTractor: 0
 --- !u!114 &11400008
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -201,6 +214,7 @@ MonoBehaviour:
   waveList:
   - EnemyList:
     - ot025
+    - ot075
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

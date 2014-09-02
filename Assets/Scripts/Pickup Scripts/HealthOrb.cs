@@ -4,6 +4,7 @@ using System.Collections;
 // Script for a health orb
 public class HealthOrb : Pickup {
 
+    //DEBUG or maybe just fun
 	void Update(){
 		if (Input.GetMouseButtonDown(0)){
 			float mouseX = Camera.main.ScreenToWorldPoint(Input.mousePosition).x;
@@ -13,7 +14,6 @@ public class HealthOrb : Pickup {
 		}
 
 	}
-
 
 	void FixedUpdate(){
 	//	rigidbody.velocity = new Vector3(Mathf.Clamp(rigidbody.velocity.x, -maxSpeed, maxSpeed), Mathf.Clamp(rigidbody.velocity.y, -maxSpeed, maxSpeed),0);

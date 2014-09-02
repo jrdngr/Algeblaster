@@ -42,6 +42,11 @@ public class PlayerManager : MonoBehaviour {
                 dashDelay = 0;
         }
     }
+    [SerializeField] private float dashDoubleTapDelay;
+    public float DashDoubleTapDelay {
+        get { return dashDoubleTapDelay; }
+        set { dashDoubleTapDelay = value; }
+    }
     [SerializeField] private float thrustForce;
     public float ThrustForce {
         get { return thrustForce; }
@@ -202,8 +207,8 @@ public class PlayerManager : MonoBehaviour {
         set { shieldMagnetRadius = value; }
     }
 
-    void Awake() {
-//        DontDestroyOnLoad(transform.gameObject);
-    }
+/*    void Awake() {
+        DontDestroyOnLoad(transform.gameObject);
+    }*/
 
 }

@@ -13,6 +13,7 @@ public class PlayerManagerEditor : Editor {
         thisPlayerManager.DashForce = EditorGUILayout.FloatField("Dash Force", thisPlayerManager.DashForce);
         thisPlayerManager.DashTime = EditorGUILayout.FloatField("Dash Time", thisPlayerManager.DashTime);
         thisPlayerManager.DashDelay = EditorGUILayout.FloatField("Dash Delay", thisPlayerManager.DashDelay);
+        thisPlayerManager.DashDoubleTapDelay = EditorGUILayout.FloatField("Dash Double Tap Delay", thisPlayerManager.DashDoubleTapDelay);
         thisPlayerManager.ThrustForce = EditorGUILayout.FloatField("Thrust Force", thisPlayerManager.ThrustForce);
         thisPlayerManager.BumpForce = EditorGUILayout.FloatField("Bump Force", thisPlayerManager.BumpForce);
         thisPlayerManager.BumpTime = EditorGUILayout.FloatField("Bump Time", thisPlayerManager.BumpTime);

@@ -148,11 +148,6 @@ public class WeaponManager : MonoBehaviour {
         get { return multizapper; }
         set { multizapper = value; }
     }
-    [SerializeField] private int multizapperDamage;
-    public int MultizapperDamage{
-        get { return multizapperDamage; }
-        set { multizapperDamage = value; }
-    }
     [SerializeField] private float multizapperFireDelay;
     public float MultizapperFireDelay {
         get { return multizapperFireDelay; }
@@ -163,6 +158,57 @@ public class WeaponManager : MonoBehaviour {
         get { return multizapperHitEffect; }
         set { multizapperHitEffect = value; }
     }
+    [SerializeField] private GameObject multizapperBall;
+    public GameObject MultizapperBall {
+        get { return multizapperBall; }
+        set { multizapperBall = value; }
+    }
+    [SerializeField] private GameObject multizapperZap;
+    public GameObject MultizapperZap {
+        get { return multizapperZap; }
+        set { multizapperZap = value; }
+    }
+    [SerializeField] private float multizapperBallSpeed;
+    public float MultizapperBallSpeed {
+        get { return multizapperBallSpeed; }
+        set { multizapperBallSpeed = value; }
+    }
+    [SerializeField] private int multizapperBallDamage;
+    public int MultizapperBallDamage {
+        get { return multizapperBallDamage; }
+        set { multizapperBallDamage = value; }
+    }
+    [SerializeField] private float multizapperZapRange;
+    public float MultizapperZapRange {
+        get { return multizapperZapRange; }
+        set { multizapperZapRange = value; }
+    }
+    [SerializeField] private float multizapperZapSpeed;
+    public float MultizapperZapSpeed {
+        get { return multizapperZapSpeed; }
+        set { multizapperZapSpeed = value; }
+    }
+    [SerializeField] private int multizapperZapDamage;
+    public int MultizapperZapDamage {
+        get { return multizapperZapDamage; }
+        set { multizapperZapDamage = value; }
+    }
+    [SerializeField] private float multizapperChainRange;
+    public float MultizapperChainRange {
+        get { return multizapperChainRange; }
+        set { multizapperChainRange = value; }
+    }
+    [SerializeField] private int multizapperNumberOfChains;
+    public int MultizapperNumberOfChains {
+        get { return multizapperNumberOfChains; }
+        set { multizapperNumberOfChains = value; }
+    }
+    [SerializeField] private bool multizapperHasTether;
+    public bool MultizapperHasTether {
+        get { return multizapperHasTether; }
+        set { multizapperHasTether = value; }
+    }
+
 
 
     //Factor Bream
@@ -186,9 +232,24 @@ public class WeaponManager : MonoBehaviour {
         get { return factorBeamHitEffect; }
         set { factorBeamHitEffect = value; }
     }
-
-    void Awake() {
-//        DontDestroyOnLoad(transform.gameObject);
+    [SerializeField] private GameObject factorBeamProjectile;
+    public GameObject FactorBeamProjectile {
+        get { return factorBeamProjectile; }
+        set { factorBeamProjectile = value; }
     }
+    [SerializeField] private float factorBeamProjectileSpeed;
+    public float FactorBeamProjectileSpeed {
+        get { return factorBeamProjectileSpeed; }
+        set { factorBeamProjectileSpeed = value; }
+    }
+    [SerializeField] private bool factorBeamHasTractor;
+    public bool FactorBeamHasTractor {
+        get { return factorBeamHasTractor; }
+        set { factorBeamHasTractor = value; }
+    }
+
+/*    void Awake() {
+        DontDestroyOnLoad(transform.gameObject);
+    }*/
 
 }

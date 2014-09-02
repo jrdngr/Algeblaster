@@ -41,6 +41,16 @@ public class playerWeaponManager : MonoBehaviour {
             newWeapon.transform.parent = transform;
             attachedWeapons[2] = newWeapon.GetComponent<Weapon>();
         }
+        if (playerManager.HasMultizapper) {
+            GameObject newWeapon = (GameObject)Instantiate(weaponManager.Multizapper, transform.position, Quaternion.identity);
+            newWeapon.transform.parent = transform;
+            attachedWeapons[3] = newWeapon.GetComponent<Weapon>();
+        }
+        if (playerManager.HasFactorBeam) {
+            GameObject newWeapon = (GameObject)Instantiate(weaponManager.FactorBeam, transform.position, Quaternion.identity);
+            newWeapon.transform.parent = transform;
+            attachedWeapons[4] = newWeapon.GetComponent<Weapon>();
+        }
     }
 
     public void Fire() {
