@@ -1,15 +1,20 @@
 using UnityEngine;
 using System.Collections;
 
-public class ChooMove : MonoBehaviour {
+public class ChooMove : MonoBehaviour, IStunnable {
+    
+    private const float pi = Mathf.PI;
+    private const float stunTime = 0.1f;
 
     private float thrustForce;
     private float maxSpeed;
     private float moveAngle;
+    private bool stunned = false;
     private Vector3 myDirection;
     private ChooChoo myVars;
     private LevelManager levelManager;
-    private const float pi = Mathf.PI;
+    private Timer stunTimer;
+
 
     public Rect MyBounds { get; set; }
 
@@ -20,15 +25,19 @@ public class ChooMove : MonoBehaviour {
         thrustForce = myVars.ThrustForce;
         maxSpeed = myVars.MaxSpeed;
         moveAngle = myVars.MoveAngle * pi / 180f;
+        stunTimer = gameObject.AddComponent<Timer>();
+        stunTimer.Trigger += StunOff;
         Reorient();
     }
 
     void FixedUpdate() {
-        if (rigidbody.velocity != myDirection * maxSpeed) {
-            rigidbody.AddForce(myDirection * thrustForce);
+        if (!stunned) {
+            if (rigidbody.velocity != myDirection * maxSpeed) {
+                rigidbody.AddForce(myDirection * thrustForce);
+            }
+            rigidbody.velocity = new Vector3(Mathf.Clamp(rigidbody.velocity.x, -maxSpeed, maxSpeed), Mathf.Clamp(rigidbody.velocity.y, -maxSpeed, maxSpeed), 0);
+            CheckBounds();
         }
-        rigidbody.velocity = new Vector3(Mathf.Clamp(rigidbody.velocity.x, -maxSpeed, maxSpeed), Mathf.Clamp(rigidbody.velocity.y, -maxSpeed, maxSpeed), 0);
-        CheckBounds();
     }
 
     void CheckBounds() {
@@ -86,6 +95,18 @@ public class ChooMove : MonoBehaviour {
         }
         myDirection = new Vector3(Mathf.Cos(moveAngle), Mathf.Sin(moveAngle), 0);
         transform.rotation = Quaternion.LookRotation(myDirection);
+    }
+
+    public void Stun() {
+        stunned = true;
+        if (stunTimer.Running)
+            stunTimer.Reset();
+        else
+            stunTimer.Go(stunTime);
+    }
+
+    void StunOff() {
+        stunned = false;
     }
 
 }

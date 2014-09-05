@@ -41,8 +41,10 @@ public class PlayerManagerEditor : Editor {
         EditorGUILayout.Separator();
 
         EditorGUILayout.LabelField("Weapon Management", EditorStyles.boldLabel);
-        thisPlayerManager.FrequencyDisplay = (GameObject)EditorGUILayout.ObjectField("Frequency Display", thisPlayerManager.FrequencyDisplay, typeof(GameObject), true);
         thisPlayerManager.WeaponDisplay = (GameObject)EditorGUILayout.ObjectField("Weapon Display", thisPlayerManager.WeaponDisplay, typeof(GameObject), true);
+        thisPlayerManager.FrequencyDisplay = (GameObject)EditorGUILayout.ObjectField("Frequency Display", thisPlayerManager.FrequencyDisplay, typeof(GameObject), true);
+        thisPlayerManager.ColorDisplay = (GameObject)EditorGUILayout.ObjectField("Color Display", thisPlayerManager.ColorDisplay, typeof(GameObject), true);
+        thisPlayerManager.WeaponColorGlow = (GameObject)EditorGUILayout.ObjectField("Color Glow Effect", thisPlayerManager.WeaponColorGlow, typeof(GameObject), true);
         EditorGUILayout.Separator();
 
         EditorGUILayout.LabelField("Unlocked Weapons", EditorStyles.boldLabel);

@@ -135,12 +135,26 @@ public class WeaponManager : MonoBehaviour {
         get { return disintegratorHoming; }
         set { disintegratorHoming = value; }
     }
+    [SerializeField] private float disintegratorHomingRadius;
+    public float DisintegratorHomingRadius {
+        get { return disintegratorHomingRadius; }
+        set { disintegratorHomingRadius = value; }
+    }
+    [SerializeField] private float disintegratorHomingAcceleration;
+    public float DisintegratorHomingAcceleration {
+        get { return disintegratorHomingAcceleration; }
+        set { disintegratorHomingAcceleration = value; }
+    }
     [SerializeField] private float disintegratorBlastRadius;
     public float DisintegratorBlastRadius {
         get { return disintegratorBlastRadius; }
         set { disintegratorBlastRadius = value; }
     }
-
+    [SerializeField] private float disintegratorRotationDamping;
+    public float DisintegratorRotationDamping{
+        get { return disintegratorRotationDamping; }
+        set { disintegratorRotationDamping = value; }
+    }
 
     //Multizapper
     [SerializeField] private GameObject multizapper;
@@ -208,6 +222,26 @@ public class WeaponManager : MonoBehaviour {
         get { return multizapperHasTether; }
         set { multizapperHasTether = value; }
     }
+    [SerializeField] private bool multizapperHasBallOfSteel;
+    public bool MultizapperHasBallOfSteel {
+        get { return multizapperHasBallOfSteel; }
+        set { multizapperHasBallOfSteel = value; }
+    }
+    [SerializeField] private GameObject multizapperBallOfSteelBall;
+    public GameObject MultizapperBallOfSteelBall {
+        get { return multizapperBallOfSteelBall; }
+        set { multizapperBallOfSteelBall = value; }
+    }
+    [SerializeField] private GameObject multizapperBallOfSteelHitEffect;
+    public GameObject MultizapperBallOfSteelHitEffect {
+        get { return multizapperBallOfSteelHitEffect; }
+        set { multizapperBallOfSteelHitEffect = value; }
+    }
+    [SerializeField] private int multizapperBallOfSteelDamage;
+    public int MultizapperBallOfSteelDamage {
+        get { return multizapperBallOfSteelDamage; }
+        set { multizapperBallOfSteelDamage = value; }
+    }
 
 
 
@@ -246,6 +280,26 @@ public class WeaponManager : MonoBehaviour {
     public bool FactorBeamHasTractor {
         get { return factorBeamHasTractor; }
         set { factorBeamHasTractor = value; }
+    }
+    [SerializeField] private int factorBeamJuiceDrain;
+    public int FactorBeamJuiceDrain {
+        get { return factorBeamJuiceDrain; }
+        set { factorBeamJuiceDrain = value; }
+    }
+    [SerializeField] private int factorBeamTractorJuiceDrain;
+    public int FactorBeamTractorJuiceDrain {
+        get { return factorBeamTractorJuiceDrain; }
+        set { factorBeamTractorJuiceDrain = value; }
+    }
+    [SerializeField] private GameObject factorBeamTractorHoldEffect;
+    public GameObject FactorBeamTractorHoldEffect {
+        get { return factorBeamTractorHoldEffect; }
+        set { factorBeamTractorHoldEffect = value; }
+    }
+    [SerializeField] private int factorBeamTractorBumpDamage;
+    public int FactorBeamTractorBumpDamage {
+        get { return factorBeamTractorBumpDamage; }
+        set { factorBeamTractorBumpDamage = value; }
     }
 
 /*    void Awake() {

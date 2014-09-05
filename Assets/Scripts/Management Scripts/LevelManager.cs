@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-
+#pragma warning disable 0414
 
 [ExecuteInEditMode]
 public class LevelManager : MonoBehaviour {

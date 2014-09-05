@@ -3,9 +3,13 @@ using System.Collections;
 
 public class playerJuiceManager : MonoBehaviour {
 
+    private const float juiceWaitTime = 0.1f;
+
     private int maxJuice;
     private float juiceRefillSpeed;
+    private bool canRefill = true;
     private Timer juiceTick;
+    private Timer juiceWaitTimer;
     private PlayerManager playerManager;
     private StatusBar juiceBar;
 
@@ -24,18 +28,32 @@ public class playerJuiceManager : MonoBehaviour {
         juiceTick = gameObject.AddComponent<Timer>();
         juiceTick.Trigger += RefillJuice;
         juiceTick.Go(juiceRefillSpeed);
+        juiceWaitTimer = gameObject.AddComponent<Timer>();
+        juiceWaitTimer.Trigger += ResetJuiceWait;
+    }
+
+    void Update() {
+
     }
 
     void RefillJuice() {
-        currentJuice++;
-        currentJuice = Mathf.Clamp(currentJuice, 0, maxJuice);
+        if (canRefill) {
+            currentJuice++;
+            currentJuice = Mathf.Clamp(currentJuice, 0, maxJuice);
+        }
         juiceTick.Go(juiceRefillSpeed);
         juiceBar.SetFillPercentage((float)currentJuice / maxJuice);
+    }
+
+    void ResetJuiceWait() {
+        canRefill = true;
     }
 
     public void UseJuice(int amount) {
         currentJuice -= amount;
         juiceBar.SetFillPercentage((float)currentJuice / maxJuice);
+        canRefill = false;
+        juiceWaitTimer.Go(juiceWaitTime);
     }
 
 }

@@ -24,13 +24,14 @@ public class Projectile : MonoBehaviour {
         }
     }
 
-    public virtual void SetProperties(float speed, Rect bounds, Vector3 velocity, int damage, int frequency, WeaponHit.WeaponType type, GameObject effect) {
+    public virtual void SetProperties(float speed, Rect bounds, Vector3 velocity, int damage, int frequency, WeaponHit.WeaponType type, WeaponHit.WeaponColor color, GameObject effect) {
         mySpeed = speed;
         myBounds = bounds;
         myVelocity = velocity;
         hit.damage = damage;
         hit.frequency = frequency;
         hit.type = type;
+        hit.color = color;
         hitEffect = effect;
     }
 

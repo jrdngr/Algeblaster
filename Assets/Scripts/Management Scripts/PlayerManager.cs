@@ -4,7 +4,7 @@ using System.Collections;
 [System.Serializable]
 public class PlayerManager : MonoBehaviour {
 
-    public enum FrequencyModes { TwoColor, ThreeColor, ThreeNumber, FullNumber };
+    public enum FrequencyModes { Color, ThreeNumber, FiveNumber, NineNumber };
 
     //Movement
     [SerializeField] private float maxSpeed;
@@ -149,6 +149,16 @@ public class PlayerManager : MonoBehaviour {
     public GameObject WeaponDisplay {
         get { return weaponDisplay; }
         set { weaponDisplay = value; }
+    }
+    [SerializeField] private GameObject colorDisplay;
+    public GameObject ColorDisplay {
+        get { return colorDisplay; }
+        set { colorDisplay = value; }
+    }
+    [SerializeField] private GameObject weaponColorGlow;
+    public GameObject WeaponColorGlow {
+        get { return weaponColorGlow; }
+        set { weaponColorGlow = value; }
     }
 
     //Unlocked Weapons

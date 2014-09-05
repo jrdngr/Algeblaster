@@ -28,8 +28,8 @@ public class EventManager : MonoBehaviour {
 
 	// Called when the player dies.  Loads up Controls scene
 	IEnumerator Reset(){
-		yield return new WaitForSeconds(3f);
-		Application.LoadLevel("Controls");
+		yield return new WaitForSeconds(1f);
+        Application.LoadLevel("OrbiterSpawningTest");
 	}
 
 }

@@ -4,7 +4,6 @@ using System.Collections;
 public class MultizapperZap : MonoBehaviour {
 
     private float zapSpeed;
-    private int zapDamage;
     private float chainRange;
     private int numberOfChains = 1;
     private Transform myTarget;
@@ -39,10 +38,10 @@ public class MultizapperZap : MonoBehaviour {
     public void SetProperties(Transform target, float zSpeed, int zDamage, float cRange, int numChains, WeaponHit hit) {
         myTarget = target;
         zapSpeed = zSpeed;
-        zapDamage = zDamage;
         chainRange = cRange;
         numberOfChains = numChains;
         myHit = hit;
+        myHit.damage = zDamage;
     }
 
 }

@@ -12,6 +12,7 @@ public class EnemyHealthManager : MonoBehaviour {
     
     private int currentHP;
     private int lastHitFreq;
+    private WeaponHit.WeaponColor lastHitColor;
     private WeaponHit.WeaponType lastHitType;
 
     public int MaxHP {
@@ -45,6 +46,16 @@ public class EnemyHealthManager : MonoBehaviour {
         }
     }
 
+    //Public properties
+    public int LastHitFrequency {
+        get { return lastHitFreq; }
+        set { lastHitFreq = value; }
+    }
+    public WeaponHit.WeaponColor LastHitColor {
+        get { return lastHitColor; }
+        set { lastHitColor = value; }
+    }
+
     void Awake() {
         currentHP = maxHP;
     }
@@ -62,10 +73,6 @@ public class EnemyHealthManager : MonoBehaviour {
         currentHP -= hp;
     }
 
-    public int GetLastHitFreq() {
-        return lastHitFreq;
-    }
-
     public void Hit(WeaponHit weaponHit) {
         if (isMinion || isFodder)
             currentHP -= weaponHit.damage;
@@ -73,6 +80,7 @@ public class EnemyHealthManager : MonoBehaviour {
             this.gameObject.SendMessage("GotHit", weaponHit);
         lastHitFreq = weaponHit.frequency;
         lastHitType = weaponHit.type;
+        lastHitColor = weaponHit.color;
     }
 
 }

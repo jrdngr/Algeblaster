@@ -6,8 +6,4 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Controls.unity
-  - enabled: 1
-    path: Assets/Scenes/TestLevel1.unity
-  - enabled: 0
-    path: Assets/Scenes/Mothership Test Area.unity
+    path: Assets/Scenes/OrbiterSpawningTest.unity

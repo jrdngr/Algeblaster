@@ -14,6 +14,7 @@ public class MinPFDeathMgr : Minion {
     private int currentHP;
     private int shipNumber = 0;
     private int lastHitFreq = 0;
+    private WeaponHit.WeaponColor lastHitColor = WeaponHit.WeaponColor.blue;
     private GameObject newShipPrefab;
     private EnemyHealthManager healthMgr;
 
@@ -38,7 +39,8 @@ public class MinPFDeathMgr : Minion {
 
     void Update() {
         currentHP = healthMgr.CurrentHP;
-        lastHitFreq = healthMgr.GetLastHitFreq();
+        lastHitFreq = healthMgr.LastHitFrequency;
+        lastHitColor = healthMgr.LastHitColor;
         CheckHitpoints();
     }
 
@@ -66,18 +68,18 @@ public class MinPFDeathMgr : Minion {
                     }
                 }
                 if (hitPrime) {
-                    GameObject hitFactorShip = (GameObject)Instantiate(newShipPrefab, transform.position, Quaternion.Euler(new Vector3(0, 180, 90)));
+                    GameObject hitFactorShip = (GameObject)Instantiate(newShipPrefab, transform.position, Quaternion.Euler(new Vector3(90, 0, 0)));
                     hitFactorShip.GetComponent<MinPFNumberMgr>().SetShipNumber(shipNumber / newValue);
                     Destroy(this.gameObject);
                 }
                 else {
                     newValueIndex = Random.Range(0, factorList.Count);
                     //Generate right ship with randomly chosen prime factor
-                    GameObject newShipRight = (GameObject)Instantiate(newShipPrefab, rightSpawn.transform.position, Quaternion.Euler(new Vector3(0, 180, 90)));
+                    GameObject newShipRight = (GameObject)Instantiate(newShipPrefab, rightSpawn.transform.position, Quaternion.Euler(new Vector3(90, 0, 0)));
                     newShipRight.GetComponent<MinPFNumberMgr>().SetShipNumber((int)factorList[newValueIndex]);
                     newShipRight.GetComponent<MinPFDeathMgr>().OrbModifier = orbModifier - 1;
                     //Generate left ship with a new number reduced by the previously chosen prime factor
-                    GameObject newShipLeft = (GameObject)Instantiate(newShipPrefab, leftSpawn.transform.position, Quaternion.Euler(new Vector3(0, 180, 90)));
+                    GameObject newShipLeft = (GameObject)Instantiate(newShipPrefab, leftSpawn.transform.position, Quaternion.Euler(new Vector3(90, 0, 0)));
                     newShipLeft.GetComponent<MinPFNumberMgr>().SetShipNumber(shipNumber / (int)factorList[newValueIndex]);
                     newShipLeft.GetComponent<MinPFDeathMgr>().OrbModifier = orbModifier - 1;
                     Instantiate(spawnedRocket, transform.position, Quaternion.Euler(new Vector3(0, 225, 180)));

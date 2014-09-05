@@ -1,6 +1,8 @@
 using UnityEngine;
 using System.Collections;
 
+#pragma warning disable 0414
+
 public class playerMovementManager : MonoBehaviour {
 
     public enum DashDirection { left = -1, right = 1};

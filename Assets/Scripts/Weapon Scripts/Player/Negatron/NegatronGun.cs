@@ -1,6 +1,8 @@
 using UnityEngine;
 using System.Collections;
 
+#pragma warning disable 0414
+
 public class NegatronGun : Weapon {
 
     private int myShape;

@@ -1,6 +1,8 @@
 using UnityEngine;
 using System.Collections;
 
+#pragma warning disable 0649
+
 public class playerShieldManager : MonoBehaviour {
 
     private int juiceCost;

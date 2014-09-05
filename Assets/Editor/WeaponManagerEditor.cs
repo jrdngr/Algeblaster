@@ -49,17 +49,23 @@ public class WeaponManagerEditor : Editor {
         thisWeaponManager.DisintegratorFireDelay = EditorGUILayout.FloatField("Fire Delay", thisWeaponManager.DisintegratorFireDelay);
         thisWeaponManager.DisintegratorProjectileSpeed = EditorGUILayout.FloatField("Projectile Speed", thisWeaponManager.DisintegratorProjectileSpeed);
         thisWeaponManager.DisintegratorAcceleration = EditorGUILayout.FloatField("Projectile Acceleration", thisWeaponManager.DisintegratorAcceleration);
-        thisWeaponManager.DisintegratorHoming = EditorGUILayout.Toggle("Homing", thisWeaponManager.DisintegratorHoming);
         thisWeaponManager.DisintegratorBlastRadius = EditorGUILayout.FloatField("Blast Radius", thisWeaponManager.DisintegratorBlastRadius);
+        thisWeaponManager.DisintegratorHoming = EditorGUILayout.Toggle("Homing", thisWeaponManager.DisintegratorHoming);
+        thisWeaponManager.DisintegratorHomingRadius = EditorGUILayout.FloatField("Homing Radius", thisWeaponManager.DisintegratorHomingRadius);
+        thisWeaponManager.DisintegratorHomingAcceleration = EditorGUILayout.FloatField("Homing Acceleration", thisWeaponManager.DisintegratorHomingAcceleration);
+        thisWeaponManager.DisintegratorRotationDamping = EditorGUILayout.FloatField("Rotation Damping", thisWeaponManager.DisintegratorRotationDamping);
         EditorGUILayout.Separator();
 
         EditorGUILayout.LabelField("Multizapper", EditorStyles.boldLabel);
         thisWeaponManager.Multizapper = (GameObject)EditorGUILayout.ObjectField("Multizapper", thisWeaponManager.Multizapper, typeof(GameObject), false);
         thisWeaponManager.MultizapperBall = (GameObject)EditorGUILayout.ObjectField("Ball", thisWeaponManager.MultizapperBall, typeof(GameObject), false);
+        thisWeaponManager.MultizapperBallOfSteelBall = (GameObject)EditorGUILayout.ObjectField("Ball of Steel", thisWeaponManager.MultizapperBallOfSteelBall, typeof(GameObject), false);
         thisWeaponManager.MultizapperZap = (GameObject)EditorGUILayout.ObjectField("Zap", thisWeaponManager.MultizapperZap, typeof(GameObject), false);
         thisWeaponManager.MultizapperHitEffect = (GameObject)EditorGUILayout.ObjectField("Hit Effect", thisWeaponManager.MultizapperHitEffect, typeof(GameObject), false);
+        thisWeaponManager.MultizapperBallOfSteelHitEffect = (GameObject)EditorGUILayout.ObjectField("BoS Hit Effect", thisWeaponManager.MultizapperBallOfSteelHitEffect, typeof(GameObject), false);
         thisWeaponManager.MultizapperBallSpeed = EditorGUILayout.FloatField("Ball Speed", thisWeaponManager.MultizapperBallSpeed);
         thisWeaponManager.MultizapperBallDamage = EditorGUILayout.IntField("Ball Damage", thisWeaponManager.MultizapperBallDamage);
+        thisWeaponManager.MultizapperBallOfSteelDamage = EditorGUILayout.IntField("Ball of Steel Damage", thisWeaponManager.MultizapperBallOfSteelDamage);
         thisWeaponManager.MultizapperZapRange = EditorGUILayout.FloatField("Zap Range", thisWeaponManager.MultizapperZapRange);
         thisWeaponManager.MultizapperZapSpeed = EditorGUILayout.FloatField("Zap Speed", thisWeaponManager.MultizapperZapSpeed);
         thisWeaponManager.MultizapperZapDamage = EditorGUILayout.IntField("Zap Damage", thisWeaponManager.MultizapperZapDamage);
@@ -67,6 +73,8 @@ public class WeaponManagerEditor : Editor {
         thisWeaponManager.MultizapperChainRange = EditorGUILayout.FloatField("Chain Range", thisWeaponManager.MultizapperChainRange);
         thisWeaponManager.MultizapperNumberOfChains = EditorGUILayout.IntField("Number of Chains", thisWeaponManager.MultizapperNumberOfChains);
         thisWeaponManager.MultizapperHasTether = EditorGUILayout.Toggle("Tether", thisWeaponManager.MultizapperHasTether);
+        thisWeaponManager.MultizapperHasBallOfSteel = EditorGUILayout.Toggle("Ball of Steel", thisWeaponManager.MultizapperHasBallOfSteel);
+        
         EditorGUILayout.Separator();
 
         EditorGUILayout.LabelField("Factor Beam", EditorStyles.boldLabel);
@@ -77,6 +85,10 @@ public class WeaponManagerEditor : Editor {
         thisWeaponManager.FactorBeamFireDelay = EditorGUILayout.FloatField("Fire Delay", thisWeaponManager.FactorBeamFireDelay);
         thisWeaponManager.FactorBeamProjectileSpeed = EditorGUILayout.FloatField("Projectile Speed", thisWeaponManager.FactorBeamProjectileSpeed);
         thisWeaponManager.FactorBeamHasTractor = EditorGUILayout.Toggle("Tractor", thisWeaponManager.FactorBeamHasTractor);
+        thisWeaponManager.FactorBeamJuiceDrain = EditorGUILayout.IntField("Juice Cost", thisWeaponManager.FactorBeamJuiceDrain);
+        thisWeaponManager.FactorBeamTractorJuiceDrain = EditorGUILayout.IntField("Tractor Juice Cost", thisWeaponManager.FactorBeamTractorJuiceDrain);
+        thisWeaponManager.FactorBeamTractorHoldEffect = (GameObject)EditorGUILayout.ObjectField("Tractor Hold Effect", thisWeaponManager.FactorBeamTractorHoldEffect, typeof(GameObject), false);
+        thisWeaponManager.FactorBeamTractorBumpDamage = EditorGUILayout.IntField("Tractor Bump Damage", thisWeaponManager.FactorBeamTractorBumpDamage);
         EditorGUILayout.Separator();
 
 

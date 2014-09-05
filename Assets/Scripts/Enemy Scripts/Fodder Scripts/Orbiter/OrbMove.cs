@@ -1,16 +1,22 @@
 using UnityEngine;
 using System.Collections;
 
-public class OrbMove : MonoBehaviour {
+public class OrbMove : MonoBehaviour, IStunnable {
+
+    private const float stunTime = 0.1f;
 
     private float thrustForce;
     private float maxSpeed;
     private float bumpForce;
     private float bumpTime;
+    private int bumpDamage;
     private bool bumping = false;
+    private bool stunned = false;
     private Timer bumpTimer;
+    private Timer stunTimer;
     private Vector3 forceVector;
     private GameObject playerShip;
+    private GameObject bumpEffect;
     private PlayerManager gameManager;
     private Orbiter myVars;
 
@@ -18,23 +24,29 @@ public class OrbMove : MonoBehaviour {
         playerShip = GameObject.FindGameObjectWithTag("Player");
         myVars = GetComponent<Orbiter>();
         gameManager = GameObject.FindGameObjectWithTag("Game Manager").GetComponent<PlayerManager>();
+        bumpDamage = gameManager.GetComponent<WeaponManager>().FactorBeamTractorBumpDamage;
+        bumpEffect = gameManager.BumpEffect;
         thrustForce = myVars.ThrustForce;
         maxSpeed = myVars.MaxSpeed;
         bumpForce = gameManager.BumpForce;
         bumpTime = gameManager.BumpTime;
         bumpTimer = gameObject.AddComponent<Timer>();
         bumpTimer.Trigger += BumpOver;
+        stunTimer = gameObject.AddComponent<Timer>();
+        stunTimer.Trigger += StunOff;
     }
 
     void FixedUpdate() {
-        if (!gameManager.GetComponent<EventManager>().playerDead) {
-            forceVector = playerShip.transform.position - transform.position;
-            transform.LookAt(playerShip.transform);
+        if (!stunned) {
+            if (!gameManager.GetComponent<EventManager>().playerDead) {
+                forceVector = playerShip.transform.position - transform.position;
+                transform.LookAt(playerShip.transform);
+            }
+            forceVector /= forceVector.magnitude;
+            rigidbody.AddForce(forceVector * thrustForce);
+            if (!bumping)
+                rigidbody.velocity = new Vector3(Mathf.Clamp(rigidbody.velocity.x, -maxSpeed, maxSpeed), Mathf.Clamp(rigidbody.velocity.y, -maxSpeed, maxSpeed), 0);
         }
-        forceVector /= forceVector.magnitude;
-        rigidbody.AddForce(forceVector * thrustForce);
-        if (!bumping)
-            rigidbody.velocity = new Vector3(Mathf.Clamp(rigidbody.velocity.x, -maxSpeed, maxSpeed), Mathf.Clamp(rigidbody.velocity.y, -maxSpeed, maxSpeed), 0);
     }
 
     void BumpOver() {
@@ -42,9 +54,31 @@ public class OrbMove : MonoBehaviour {
     }
 
     void OnCollisionEnter(Collision collision) {
-        rigidbody.AddForce(collision.contacts[0].normal * bumpForce, ForceMode.Impulse);
-        bumping = true;
-        bumpTimer.Go(bumpTime);
+        if (!stunned) {
+            rigidbody.AddForce(collision.contacts[0].normal * bumpForce, ForceMode.Impulse);
+            bumping = true;
+            bumpTimer.Go(bumpTime);
+            GameObject myBumpEffect = (GameObject)Instantiate(bumpEffect, transform.position, Quaternion.identity);
+            Destroy(myBumpEffect, 1f);
+        }
+        if (stunned && collision.gameObject.CompareTag("Fodder")) {
+            if (collision.gameObject.CompareTag("Fodder"))
+                collision.gameObject.GetComponent<EnemyHealthManager>().SubtractHP(bumpDamage);
+            GameObject myBumpEffect = (GameObject)Instantiate(bumpEffect, transform.position, Quaternion.identity);
+            Destroy(myBumpEffect, 1f);
+        }
+    }
+
+    public void Stun() {
+        stunned = true;
+        if (stunTimer.Running)
+            stunTimer.Reset();
+        else
+            stunTimer.Go(stunTime);
+    }
+
+    void StunOff() {
+        stunned = false;
     }
 
 }

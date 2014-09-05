@@ -1,6 +1,8 @@
 using UnityEngine;
 using System.Collections;
 
+#pragma warning disable 0414
+
 public class PositronGun : Weapon {
 
     private bool hasSpread;
@@ -21,7 +23,6 @@ public class PositronGun : Weapon {
         numberOfBullets = weaponManager.PositronNumberOfBullets;
         twoBulletsSpawnOffset = weaponManager.PositronTwoBulletsSpawnOffset;
         spreadAngle = weaponManager.PositronSpreadAngle;
-        projectileVelocity = Vector3.zero;
         spreadAngle *= (Mathf.PI / 180) ;
     }
 
@@ -29,11 +30,17 @@ public class PositronGun : Weapon {
         if (canFire) {
             canFire = false;
             delayTimer.Go(delay);
+            colorGlowEffect = playerWeaponManager.WeaponColorGlow;
             projectileFrequency = playerWeaponManager.Frequency;
+            projectileColor = (WeaponHit.WeaponColor)playerWeaponManager.CurrentColor;
             if (numberOfBullets == 1) {
                 projectileVelocity = new Vector3(0, projectileSpeed, 0);
                 GameObject myBullet = (GameObject)Instantiate(projectile, projectileSpawnPosition.transform.position, Quaternion.identity);
-                myBullet.GetComponent<Projectile>().SetProperties(projectileSpeed, projectileBounds, projectileVelocity, projectileDamage, projectileFrequency, projectileType, projectileHitEffect);
+                myBullet.GetComponent<Projectile>().SetProperties(projectileSpeed, projectileBounds, projectileVelocity, projectileDamage, projectileFrequency, projectileType, projectileColor, projectileHitEffect);
+                if (myFrequencyMode == PlayerManager.FrequencyModes.Color) {
+                    GameObject myGlow = (GameObject)Instantiate(colorGlowEffect, projectileSpawnPosition.transform.position, Quaternion.identity);
+                    myGlow.transform.parent = myBullet.transform;
+                }
             }
             else if (numberOfBullets == 2) {
                 projectileVelocity = new Vector3(0, projectileSpeed, 0);
@@ -41,41 +48,68 @@ public class PositronGun : Weapon {
                 spawnPosition.x += twoBulletsSpawnOffset;
                 //First Bullet
                 GameObject myBullet = (GameObject)Instantiate(projectile, spawnPosition, Quaternion.identity);
-                myBullet.GetComponent<Projectile>().SetProperties(projectileSpeed, projectileBounds, projectileVelocity, projectileDamage, projectileFrequency, projectileType, projectileHitEffect);
+                myBullet.GetComponent<Projectile>().SetProperties(projectileSpeed, projectileBounds, projectileVelocity, projectileDamage, projectileFrequency, projectileType, projectileColor, projectileHitEffect);
+                if (myFrequencyMode == PlayerManager.FrequencyModes.Color) {
+                    GameObject myGlow = (GameObject)Instantiate(colorGlowEffect, projectileSpawnPosition.transform.position, Quaternion.identity);
+                    myGlow.transform.parent = myBullet.transform;
+                }
                 //Second Bullet
                 spawnPosition.x -= 2 * twoBulletsSpawnOffset;
                 myBullet = (GameObject)Instantiate(projectile, spawnPosition, Quaternion.identity);
-                myBullet.GetComponent<Projectile>().SetProperties(projectileSpeed, projectileBounds, projectileVelocity, projectileDamage, projectileFrequency, projectileType, projectileHitEffect);
+                myBullet.GetComponent<Projectile>().SetProperties(projectileSpeed, projectileBounds, projectileVelocity, projectileDamage, projectileFrequency, projectileType, projectileColor, projectileHitEffect);
+                if (myFrequencyMode == PlayerManager.FrequencyModes.Color) {
+                    GameObject myGlow = (GameObject)Instantiate(colorGlowEffect, projectileSpawnPosition.transform.position, Quaternion.identity);
+                    myGlow.transform.parent = myBullet.transform;
+                }
             }
             else if (numberOfBullets >= 3) {
                 //First Bullet
                 projectileVelocity = new Vector3(0, projectileSpeed, 0);
                 GameObject myBullet = (GameObject)Instantiate(projectile, projectileSpawnPosition.transform.position, Quaternion.identity);
-                myBullet.GetComponent<Projectile>().SetProperties(projectileSpeed, projectileBounds, projectileVelocity, projectileDamage, projectileFrequency, projectileType, projectileHitEffect);
+                myBullet.GetComponent<Projectile>().SetProperties(projectileSpeed, projectileBounds, projectileVelocity, projectileDamage, projectileFrequency, projectileType, projectileColor, projectileHitEffect);
+                if (myFrequencyMode == PlayerManager.FrequencyModes.Color) {
+                    GameObject myGlow = (GameObject)Instantiate(colorGlowEffect, projectileSpawnPosition.transform.position, Quaternion.identity);
+                    myGlow.transform.parent = myBullet.transform;
+                }
                 //Second Bullet
                 projectileVelocity.x = projectileSpeed * Mathf.Cos((Mathf.PI / 2) + spreadAngle);
                 projectileVelocity.y = projectileSpeed * Mathf.Sin((Mathf.PI / 2) + spreadAngle);
                 myBullet = (GameObject)Instantiate(projectile, projectileSpawnPosition.transform.position, Quaternion.identity);
-                myBullet.GetComponent<Projectile>().SetProperties(projectileSpeed, projectileBounds, projectileVelocity, projectileDamage, projectileFrequency, projectileType, projectileHitEffect);
+                myBullet.GetComponent<Projectile>().SetProperties(projectileSpeed, projectileBounds, projectileVelocity, projectileDamage, projectileFrequency, projectileType, projectileColor, projectileHitEffect);
+                if (myFrequencyMode == PlayerManager.FrequencyModes.Color) {
+                    GameObject myGlow = (GameObject)Instantiate(colorGlowEffect, projectileSpawnPosition.transform.position, Quaternion.identity);
+                    myGlow.transform.parent = myBullet.transform;
+                }
                 //Third Bullet
                 projectileVelocity.x = projectileSpeed * Mathf.Cos((Mathf.PI / 2) - spreadAngle);
                 projectileVelocity.y = projectileSpeed * Mathf.Sin((Mathf.PI / 2) - spreadAngle);
                 myBullet = (GameObject)Instantiate(projectile, projectileSpawnPosition.transform.position, Quaternion.identity);
-                myBullet.GetComponent<Projectile>().SetProperties(projectileSpeed, projectileBounds, projectileVelocity, projectileDamage, projectileFrequency, projectileType, projectileHitEffect);
+                myBullet.GetComponent<Projectile>().SetProperties(projectileSpeed, projectileBounds, projectileVelocity, projectileDamage, projectileFrequency, projectileType, projectileColor, projectileHitEffect);
+                if (myFrequencyMode == PlayerManager.FrequencyModes.Color) {
+                    GameObject myGlow = (GameObject)Instantiate(colorGlowEffect, projectileSpawnPosition.transform.position, Quaternion.identity);
+                    myGlow.transform.parent = myBullet.transform;
+                }
 
                 if (numberOfBullets == 5) {
                     //Fourth Bullet
                     projectileVelocity.x = projectileSpeed * Mathf.Cos((Mathf.PI / 2) + (2 * spreadAngle));
                     projectileVelocity.y = projectileSpeed * Mathf.Sin((Mathf.PI / 2) + (2 * spreadAngle));
                     myBullet = (GameObject)Instantiate(projectile, projectileSpawnPosition.transform.position, Quaternion.identity);
-                    myBullet.GetComponent<Projectile>().SetProperties(projectileSpeed, projectileBounds, projectileVelocity, projectileDamage, projectileFrequency, projectileType, projectileHitEffect);
+                    myBullet.GetComponent<Projectile>().SetProperties(projectileSpeed, projectileBounds, projectileVelocity, projectileDamage, projectileFrequency, projectileType, projectileColor, projectileHitEffect);
+                    if (myFrequencyMode == PlayerManager.FrequencyModes.Color) {
+                        GameObject myGlow = (GameObject)Instantiate(colorGlowEffect, projectileSpawnPosition.transform.position, Quaternion.identity);
+                        myGlow.transform.parent = myBullet.transform;
+                    }
                     //Fifth Bullet
                     projectileVelocity.x = projectileSpeed * Mathf.Cos((Mathf.PI / 2) - (2 * spreadAngle));
                     projectileVelocity.y = projectileSpeed * Mathf.Sin((Mathf.PI / 2) - (2 * spreadAngle));
                     myBullet = (GameObject)Instantiate(projectile, projectileSpawnPosition.transform.position, Quaternion.identity);
-                    myBullet.GetComponent<Projectile>().SetProperties(projectileSpeed, projectileBounds, projectileVelocity, projectileDamage, projectileFrequency, projectileType, projectileHitEffect);
+                    myBullet.GetComponent<Projectile>().SetProperties(projectileSpeed, projectileBounds, projectileVelocity, projectileDamage, projectileFrequency, projectileType, projectileColor, projectileHitEffect);
+                    if (myFrequencyMode == PlayerManager.FrequencyModes.Color) {
+                        GameObject myGlow = (GameObject)Instantiate(colorGlowEffect, projectileSpawnPosition.transform.position, Quaternion.identity);
+                        myGlow.transform.parent = myBullet.transform;
+                    }
                 }
-
             }
         }
     }
