@@ -5,7 +5,6 @@ public class DisintegratorRocket : Projectile {
 
     private const float keepMyTrail = 20f;
     private const float checkForTargetDelay = 0.1f;
-    private const int numberOfAcceptableMisses = 2;
     private const float angerDampingBoost = 4f;
     private const int homingRocketBoostRange = 10;
     private const float homingBrakeDistance = 5f;
@@ -44,6 +43,7 @@ public class DisintegratorRocket : Projectile {
 
     protected override void FixedUpdate() {
 
+        //Lock z-plane position to 0 through this annoying process because I can't set position components independently
         Vector3 annoying = transform.position;
         annoying.z = 0;
         transform.position = annoying;

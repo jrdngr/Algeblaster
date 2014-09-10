@@ -8,6 +8,7 @@ public class EventManager : MonoBehaviour {
 	public static event EventHandler CreatedMinion;
 
 	public bool playerDead = false;
+    public bool enemiesDead = false;
 
     //These two minion methods are called by the level script for a given level.  
     //They will probably be useless once levels are handbuilt but it's good for the test levels
@@ -22,14 +23,14 @@ public class EventManager : MonoBehaviour {
 	}
 
 	void Update(){
-		if (playerDead)
+		if (playerDead || enemiesDead)
 			StartCoroutine("Reset");
 	}
 
 	// Called when the player dies.  Loads up Controls scene
 	IEnumerator Reset(){
 		yield return new WaitForSeconds(1f);
-        Application.LoadLevel("OrbiterSpawningTest");
+        Application.LoadLevel("Menu");
 	}
 
 }

@@ -242,7 +242,7 @@ MonoBehaviour:
   moveAngle: 235
   thrustForce: 5
   maxSpeed: 3
-  deathEffect: {fileID: 100002, guid: 4209f534fd4c6154cbf7cc24cbda1bd1, type: 2}
+  deathEffect: {fileID: 100002, guid: cbc82060b61f8a746a754f2b49e07209, type: 2}
 --- !u!114 &11400008
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -276,8 +276,6 @@ MonoBehaviour:
   spawnDistanceFromCenter: .5
   minHealth: 0
   maxHealth: 2
-  minExp: 5
-  maxExp: 5
 --- !u!135 &13500000
 SphereCollider:
   m_ObjectHideFlags: 1

@@ -205,7 +205,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   thrustForce: 10
   maxSpeed: 4
-  deathEffect: {fileID: 100000, guid: b85303a3b6c760149a6e4a1a8e198055, type: 2}
+  deathEffect: {fileID: 100002, guid: cbc82060b61f8a746a754f2b49e07209, type: 2}
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1

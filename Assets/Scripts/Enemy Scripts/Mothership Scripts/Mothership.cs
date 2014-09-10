@@ -20,6 +20,8 @@ public class Mothership : MonoBehaviour {
     private List<MothershipPart.Type> parts = new List<MothershipPart.Type>();
     private List<GameObject> partList = new List<GameObject>();
     private char[] validCharacters = { 'x', 'n', '+', '-', 'f', 'd' };
+    private PlayerManager playerManager;
+    private bool colorMode = false;
 
     public string Equation {
         get {
@@ -46,6 +48,9 @@ public class Mothership : MonoBehaviour {
     }
 
     void Start() {
+        playerManager = GameObject.Find("Game Manager").GetComponent<PlayerManager>();
+        if (playerManager.FrequencyMode == PlayerManager.FrequencyModes.Color)
+            colorMode = true;
         LoadFromString();
         
         int i = 0;
@@ -56,14 +61,14 @@ public class Mothership : MonoBehaviour {
             pos = new Vector3(transform.position.x + i * distanceBetweenParts + factorOffset - centerX, transform.position.y, transform.position.z);
             switch (part) {
                 case MothershipPart.Type.core:
-                    newPart = (GameObject)Instantiate(Resources.Load("Enemies/Mothership/MSCore", typeof(GameObject)), pos, Quaternion.Euler(90,0,0));
+                    newPart = (GameObject)Instantiate(Resources.Load("Enemies/Mothership/Number/MSCore", typeof(GameObject)), pos, Quaternion.Euler(90,0,0));
                     newPart.GetComponent<MSPartCore>().MyType = MothershipPart.Type.core;
                     newPart.GetComponent<MSPartCore>().HasFactor = false;
                     newPart.transform.parent = transform;
                     break;
 
                 case MothershipPart.Type.divide:
-                    newPart = (GameObject)Instantiate(Resources.Load("Enemies/Mothership/MSCore", typeof(GameObject)), pos, Quaternion.Euler(90, 0, 0));
+                    newPart = (GameObject)Instantiate(Resources.Load("Enemies/Mothership/Number/MSCore", typeof(GameObject)), pos, Quaternion.Euler(90, 0, 0));
                     newPart.GetComponent<MSPartCore>().MyType = MothershipPart.Type.core;
                     newPart.GetComponent<MSPartCore>().HasFactor = true;
                     newPart.transform.parent = transform;
@@ -71,25 +76,34 @@ public class Mothership : MonoBehaviour {
 
 
                 case MothershipPart.Type.minus:
-                    newPart = (GameObject)Instantiate(Resources.Load("Enemies/Mothership/MSPlusMinus", typeof(GameObject)), pos, Quaternion.Euler(90, 0, 0));
+                    newPart = (GameObject)Instantiate(Resources.Load("Enemies/Mothership/Number/MSPlusMinus", typeof(GameObject)), pos, Quaternion.Euler(90, 0, 0));
                     newPart.GetComponent<MSPartPlusMinus>().MyType = MothershipPart.Type.minus;
                     newPart.transform.parent = transform;
                     break;
 
                 case MothershipPart.Type.plus:
-                    newPart = (GameObject)Instantiate(Resources.Load("Enemies/Mothership/MSPlusMinus", typeof(GameObject)), pos, Quaternion.Euler(90, 0, 0));
+                    newPart = (GameObject)Instantiate(Resources.Load("Enemies/Mothership/Number/MSPlusMinus", typeof(GameObject)), pos, Quaternion.Euler(90, 0, 0));
                     newPart.GetComponent<MSPartPlusMinus>().MyType = MothershipPart.Type.plus;
                     newPart.transform.parent = transform;
                     break;
 
                 case MothershipPart.Type.numerator:
-                    newPart = (GameObject)Instantiate(Resources.Load("Enemies/Mothership/MSNumerator", typeof(GameObject)), pos, Quaternion.Euler(90, 0, 0));
-                    newPart.GetComponent<MSPartNumerator>().MyType = MothershipPart.Type.numerator;
+                    if (colorMode) {
+                        newPart = (GameObject)Instantiate(Resources.Load("Enemies/Mothership/Color/ColorMSNumerator", typeof(GameObject)), pos, Quaternion.Euler(90, 0, 0));
+                        newPart.GetComponent<ColorMSPartNumerator>().MyType = MothershipPart.Type.numerator;
+                    }
+                    else {
+                        newPart = (GameObject)Instantiate(Resources.Load("Enemies/Mothership/Number/MSNumerator", typeof(GameObject)), pos, Quaternion.Euler(90, 0, 0));
+                        newPart.GetComponent<MSPartNumerator>().MyType = MothershipPart.Type.numerator;
+                    }
                     newPart.transform.parent = transform;
                     break;
 
                 case MothershipPart.Type.factor:
-                    newPart = (GameObject)Instantiate(Resources.Load("Enemies/Mothership/MSFactor", typeof(GameObject)), pos, Quaternion.Euler(90, 0, 0));
+                    if (colorMode)
+                        newPart = (GameObject)Instantiate(Resources.Load("Enemies/Mothership/Color/ColorMSFactor", typeof(GameObject)), pos, Quaternion.Euler(90, 0, 0));
+                    else
+                        newPart = (GameObject)Instantiate(Resources.Load("Enemies/Mothership/Number/MSFactor", typeof(GameObject)), pos, Quaternion.Euler(90, 0, 0));
                     newPart.GetComponent<MSPartFactor>().MyType = MothershipPart.Type.factor;
                     newPart.transform.parent = transform;
                     factorOffset = factorOffsetValue;
@@ -105,7 +119,11 @@ public class Mothership : MonoBehaviour {
             i++;
         }
         if (hasDenominator){
-            GameObject denom = (GameObject)Instantiate(Resources.Load("Enemies/Mothership/MSDenominator"), new Vector3(transform.position.x + 0.5f, transform.position.y - 1.5f, 0), Quaternion.identity);
+            GameObject denom;
+            if (colorMode)
+                denom = (GameObject)Instantiate(Resources.Load("Enemies/Mothership/Color/MSDenominator"), new Vector3(transform.position.x + 0.5f, transform.position.y - 1.5f, 0), Quaternion.identity);
+            else
+                denom = (GameObject)Instantiate(Resources.Load("Enemies/Mothership/Number/MSDenominator"), new Vector3(transform.position.x + 0.5f, transform.position.y - 1.5f, 0), Quaternion.identity);
             denom.transform.parent = transform;
             denom.GetComponent<MSPartDenominator>().MyShield.transform.localScale = new Vector3(centerX + 1, 1, 2);
             denom.GetComponent<MSPartDenominator>().MyShield.particleSystem.emissionRate *= centerX;

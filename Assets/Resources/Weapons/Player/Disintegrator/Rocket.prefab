@@ -260,19 +260,19 @@ TrailRenderer:
   m_Colors:
     m_Color[0]:
       serializedVersion: 2
-      rgba: 4294898544
+      rgba: 4294865723
     m_Color[1]:
       serializedVersion: 2
-      rgba: 771748977
+      rgba: 771718472
     m_Color[2]:
       serializedVersion: 2
-      rgba: 385807216
+      rgba: 385779993
     m_Color[3]:
       serializedVersion: 2
-      rgba: 167638415
+      rgba: 167609413
     m_Color[4]:
       serializedVersion: 2
-      rgba: 16579024
+      rgba: 16561791
   m_MinVertexDistance: 0
   m_Autodestruct: 0
 --- !u!114 &11400000
@@ -286,12 +286,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb7cf3023a901c14680c64b861594847, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  homingRocketBoostRange: 10
-  homingBrakeDistance: 5
-  minimumBrakeSpeed: 5
-  driftAcceleration: 20
-  lateralThrustCorrection: 4
-  angerTime: 3
 --- !u!198 &19800000
 ParticleSystem:
   m_ObjectHideFlags: 1

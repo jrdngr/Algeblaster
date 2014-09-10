@@ -96,12 +96,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3c0f9e6f593607498a1ea7b9e02d13f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 5
+  damage: 1
   bulletVelocity: 10
   distanceBetweenBullets: .300000012
-  fireSpeed: .25
-  volleyDelay: 2.5
-  bulletsPerVolley: 5
+  fireSpeed: .5
+  volleyDelay: 4
+  bulletsPerVolley: 2
   bulletsAtATime: 0
 --- !u!1001 &100100000
 Prefab:

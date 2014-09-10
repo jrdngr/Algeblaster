@@ -1,0 +1,243 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &100000
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 400000}
+  - 114: {fileID: 11400004}
+  - 114: {fileID: 11400006}
+  - 114: {fileID: 11400000}
+  - 114: {fileID: 11400002}
+  m_Layer: 0
+  m_Name: Game Manager
+  m_TagString: Game Manager
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &100002
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 400002}
+  - 114: {fileID: 11400008}
+  m_Layer: 0
+  m_Name: Level
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &400000
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 400002}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!4 &400002
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100002}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -4.85912609, y: .548841476, z: 2.8527832}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 400000}
+  m_RootOrder: 0
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fc36929bbfad98479946bec80352092, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxSpeed: 8
+  dashForce: 60
+  dashTime: .100000001
+  dashDelay: .5
+  dashDoubleTapDelay: .200000003
+  thrustForce: 100
+  dashEffect: {fileID: 100000, guid: 0903a5996dcffc843acac83dd8b7a982, type: 2}
+  bumpForce: 10
+  bumpTime: .100000001
+  bumpEffect: {fileID: 100000, guid: 873807c2ace610f46bb4cc3b3215f5bf, type: 2}
+  juiceCost: 2
+  juiceDrainTickTime: .0199999996
+  emptyJuiceDelay: 1
+  maxHitpoints: 100
+  bumpDamage: 25
+  playerDeathEffect: {fileID: 100002, guid: 4209f534fd4c6154cbf7cc24cbda1bd1, type: 2}
+  healthBar: {fileID: 0}
+  maxJuice: 100
+  juiceRefillSpeed: .0199999996
+  juiceBar: {fileID: 0}
+  frequencyDisplay: {fileID: 0}
+  weaponDisplay: {fileID: 0}
+  colorDisplay: {fileID: 0}
+  weaponColorGlow: {fileID: 100000, guid: ff8af65373a75894cb4008b1fe083411, type: 2}
+  hasPositron: 1
+  hasNegatron: 1
+  hasDisintegrator: 1
+  hasMultizapper: 1
+  hasFactorBeam: 1
+  frequencyMode: 3
+  credits: 1
+  hasShieldMagnet: 1
+  shieldMagnetForce: 100
+  shieldMagnetRadius: 5
+--- !u!114 &11400002
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fb54d8b4128f444e925ac6d019d1b5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  positronGun: {fileID: 100002, guid: b44bed6a232814a4ca028b232700e1b3, type: 2}
+  positronDamage: 10
+  positronFireDelay: .200000003
+  positronProjectileSpeed: 15
+  positronProjectile: {fileID: 100000, guid: f2334b2d144a7454c8244bf3547eb189, type: 2}
+  positronHitEffect: {fileID: 100000, guid: bef44414f167af84c9937745074620e1, type: 2}
+  positronHasSpread: 0
+  positronNumberOfBullets: 2
+  positronTwoBulletsSpawnOffset: .200000003
+  positronSpreadAngle: 10
+  negatronGun: {fileID: 100002, guid: a7d8b9318a7c2734696f3c58e66d610d, type: 2}
+  negatronDamage: 30
+  negatronFireDelay: .800000012
+  negatronProjectileSpeed: 7
+  negatronProjectile: {fileID: 100002, guid: 7e3e58aaa8b1988408677d0d560842ce, type: 2}
+  negatronHitEffect: {fileID: 100002, guid: d481100e7ecacf34f934b2fa919314ee, type: 2}
+  negatronShape: 0
+  disintegrator: {fileID: 100004, guid: ec93b85eaee7b89488a9f63e9dab1133, type: 2}
+  disintegratorDamage: 100
+  disintegratorFireDelay: 1.5
+  disintegratorProjectileSpeed: 10
+  disintegratorProjectile: {fileID: 100004, guid: 291997e05d4388c4cae766fd622286c5,
+    type: 2}
+  disintegratorHitEffect: {fileID: 100002, guid: eaeecbf9672fadc43b4d9fb1413d8a25,
+    type: 2}
+  disintegratorAcceleration: 20
+  disintegratorHoming: 1
+  disintegratorHomingRadius: 10
+  disintegratorHomingAcceleration: 30
+  disintegratorBlastRadius: 3
+  disintegratorRotationDamping: 5
+  multizapper: {fileID: 100000, guid: 9ecd60ea8fecce946a78a76785a3b86f, type: 2}
+  multizapperFireDelay: 1
+  multizapperHitEffect: {fileID: 100000, guid: e880dab445df3d942aeb9826df4dcc7d, type: 2}
+  multizapperBall: {fileID: 100002, guid: 2527c389ec07b9f439878d9b3f74714a, type: 2}
+  multizapperZap: {fileID: 100000, guid: 43482cd9af5c4454d95677b5d81e4229, type: 2}
+  multizapperBallSpeed: 3
+  multizapperBallDamage: 50
+  multizapperZapRange: 5
+  multizapperZapSpeed: 10
+  multizapperZapDamage: 25
+  multizapperChainRange: 10
+  multizapperNumberOfChains: 3
+  multizapperHasTether: 1
+  multizapperHasBallOfSteel: 0
+  multizapperBallOfSteelBall: {fileID: 100000, guid: d673ae7fb32db1a4d980be1b9a6fd0f6,
+    type: 2}
+  multizapperBallOfSteelHitEffect: {fileID: 100000, guid: 873807c2ace610f46bb4cc3b3215f5bf,
+    type: 2}
+  multizapperBallOfSteelDamage: 100
+  factorBeam: {fileID: 100000, guid: 365fcb1062676624a9a8c1cca5f44bc5, type: 2}
+  factorBeamDamage: 10
+  factorBeamFireDelay: .100000001
+  factorBeamHitEffect: {fileID: 100000, guid: 12102923cdcd16c458179770918a38d5, type: 2}
+  factorBeamProjectile: {fileID: 100000, guid: ec3435ca04302564ca7e70b5492368b2, type: 2}
+  factorBeamProjectileSpeed: 20
+  factorBeamHasTractor: 0
+  factorBeamJuiceDrain: 2
+  factorBeamTractorJuiceDrain: 1
+  factorBeamTractorHoldEffect: {fileID: 100000, guid: 12102923cdcd16c458179770918a38d5,
+    type: 2}
+  factorBeamTractorBumpDamage: 25
+--- !u!114 &11400004
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 897cd2e5e54e60b44add3739aafc3061, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerDead: 0
+  enemiesDead: 0
+--- !u!114 &11400006
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49942959de390fa4e8b170d679fb737f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bounds:
+    serializedVersion: 2
+    x: -17.7000008
+    y: -6.0999999
+    width: 35.5
+    height: 19.7099991
+  playerBounds:
+    serializedVersion: 2
+    x: -16.7399998
+    y: -3.57999992
+    width: 30.2999992
+    height: 16
+--- !u!114 &11400008
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58e4c59ba6ee2af45a48b7b756beee7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasMothership: 1
+  mothershipEquation: f
+  experienceReward: 0
+  waveList: []
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 100000}
+  m_IsPrefabParent: 1
+  m_IsExploded: 1

@@ -46,38 +46,34 @@ public class ChooMove : MonoBehaviour, IStunnable {
         bool changed = false;
         if (transform.position.x < MyBounds.xMin && xVelocity < 0) {
             xVelocity *= -1;
-            moveAngle += pi;
             if (moveAngle > pi / 2 && moveAngle < pi)
-                moveAngle += pi / 2;
+                moveAngle -= pi / 2;
             else if (moveAngle > pi && moveAngle < 3 * pi / 2)
-                moveAngle -= pi / 2;             
+                moveAngle += pi / 2;             
             changed = true;
         }
         if (transform.position.x > MyBounds.xMax && xVelocity > 0) {
             xVelocity *= -1;
-            moveAngle += pi;
             if (moveAngle > 0 && moveAngle < pi / 2)
-                moveAngle -= pi / 2;
+                moveAngle += pi / 2;
             else if (moveAngle > 3 * pi / 2 && moveAngle < 2*pi)
-                moveAngle += pi / 2;             
+                moveAngle -= pi / 2;             
             changed = true;
         }
         if (transform.position.y < MyBounds.yMin && yVelocity < 0) {
             yVelocity *= -1;
-            moveAngle += pi;
             if (moveAngle > 3 * pi / 2 && moveAngle < 2 * pi)
-                moveAngle -= pi / 2;
-            else if (moveAngle > pi && moveAngle < 3 * pi / 2)
                 moveAngle += pi / 2;
+            else if (moveAngle > pi && moveAngle < 3 * pi / 2)
+                moveAngle -= pi / 2;
             changed = true;
         }
         if (transform.position.y > MyBounds.yMax && yVelocity > 0) {
             yVelocity *= -1;
-            moveAngle += pi;
             if (moveAngle > 0 && moveAngle < pi / 2)
-                moveAngle += pi / 2;
-            else if (moveAngle > pi / 2 && moveAngle < pi)
                 moveAngle -= pi / 2;
+            else if (moveAngle > pi / 2 && moveAngle < pi)
+                moveAngle += pi / 2;
             changed = true;
         }
         if (changed) {

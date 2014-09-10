@@ -3,7 +3,7 @@ using System.Collections;
 
 #pragma warning disable 414
 
-public class MinPFTestLevel : Level {
+public class MinPFTestLevel : MonoBehaviour {
 
 	[SerializeField] private float spawnDelay = 1f;
 	[SerializeField] private int maxPFMinions = 1;
@@ -44,7 +44,7 @@ public class MinPFTestLevel : Level {
 	void SpawnPFMinion(){
 		float x = Random.Range (pfXMin, pfXMax);
 		float y = Random.Range ((pfYMin + pfYMax)/2, pfYMax);
-		Instantiate(pfMinion, new Vector3(x, y, 0), Quaternion.Euler (new Vector3(0,180,90)));
+		Instantiate(pfMinion, new Vector3(x, y, 0), Quaternion.Euler (new Vector3(90,0,0)));
 		numberOfPFMinions++;
 	}
 

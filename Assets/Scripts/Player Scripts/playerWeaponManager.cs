@@ -42,6 +42,7 @@ public class playerWeaponManager : MonoBehaviour {
         colorDisplay = playerManager.ColorDisplay.GetComponent<Renderer>();
         weaponDisplay = playerManager.WeaponDisplay.GetComponent<TextMesh>();
         weaponColorGlow = playerManager.WeaponColorGlow;
+        colorDisplay.material.color = Color.blue;
         weaponColorGlow.GetComponent<ParticleSystem>().startColor = new Color(0, 0, 1, 0.90f);
         if (playerManager.HasPositron) {
             GameObject newWeapon = (GameObject)Instantiate(weaponManager.PositronGun, transform.position, Quaternion.identity);
