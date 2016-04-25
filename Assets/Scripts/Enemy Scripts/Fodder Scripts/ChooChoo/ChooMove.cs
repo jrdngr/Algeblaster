@@ -32,17 +32,17 @@ public class ChooMove : MonoBehaviour, IStunnable {
 
     void FixedUpdate() {
         if (!stunned) {
-            if (rigidbody.velocity != myDirection * maxSpeed) {
-                rigidbody.AddForce(myDirection * thrustForce);
+            if (GetComponent<Rigidbody>().velocity != myDirection * maxSpeed) {
+                GetComponent<Rigidbody>().AddForce(myDirection * thrustForce);
             }
-            rigidbody.velocity = new Vector3(Mathf.Clamp(rigidbody.velocity.x, -maxSpeed, maxSpeed), Mathf.Clamp(rigidbody.velocity.y, -maxSpeed, maxSpeed), 0);
+            GetComponent<Rigidbody>().velocity = new Vector3(Mathf.Clamp(GetComponent<Rigidbody>().velocity.x, -maxSpeed, maxSpeed), Mathf.Clamp(GetComponent<Rigidbody>().velocity.y, -maxSpeed, maxSpeed), 0);
             CheckBounds();
         }
     }
 
     void CheckBounds() {
-        float xVelocity = rigidbody.velocity.x;
-        float yVelocity = rigidbody.velocity.y;
+        float xVelocity = GetComponent<Rigidbody>().velocity.x;
+        float yVelocity = GetComponent<Rigidbody>().velocity.y;
         bool changed = false;
         if (transform.position.x < MyBounds.xMin && xVelocity < 0) {
             xVelocity *= -1;
@@ -77,7 +77,7 @@ public class ChooMove : MonoBehaviour, IStunnable {
             changed = true;
         }
         if (changed) {
-            rigidbody.velocity = new Vector3(xVelocity, yVelocity, 0);
+            GetComponent<Rigidbody>().velocity = new Vector3(xVelocity, yVelocity, 0);
             Reorient();
         }
     }

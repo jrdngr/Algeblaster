@@ -37,8 +37,8 @@ public class CodeManager : MonoBehaviour {
     }
 
 	void Start () {
-		renderer.sortingLayerName = "GUI Top";
-		renderer.sortingOrder = 1;
+		GetComponent<Renderer>().sortingLayerName = "GUI Top";
+		GetComponent<Renderer>().sortingOrder = 1;
         numberLabel = GetComponent<TextMesh>();
 	}
 

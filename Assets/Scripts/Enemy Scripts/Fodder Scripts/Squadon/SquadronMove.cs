@@ -55,14 +55,14 @@ public class SquadronMove : MonoBehaviour, IStunnable {
             float midPoint = MyBounds.yMin + ((MyBounds.yMax - MyBounds.yMin) / 2);
             switch (myPattern) {
                 case Squadron.SquadronPattern.straight:
-                    rigidbody.velocity = new Vector3(0, -maxSpeed, 0);
+                    GetComponent<Rigidbody>().velocity = new Vector3(0, -maxSpeed, 0);
                     break;
                 case Squadron.SquadronPattern.curve:
-                    rigidbody.velocity = new Vector3(rigidbody.velocity.x, -maxSpeed, 0);
-                    rigidbody.AddForce(new Vector3(myDirection, 0, 0) * curveThrust);
+                    GetComponent<Rigidbody>().velocity = new Vector3(GetComponent<Rigidbody>().velocity.x, -maxSpeed, 0);
+                    GetComponent<Rigidbody>().AddForce(new Vector3(myDirection, 0, 0) * curveThrust);
                     break;
                 case Squadron.SquadronPattern.zigzag:
-                    rigidbody.velocity = new Vector3((maxSpeed / 2) * myDirection, -maxSpeed, 0);
+                    GetComponent<Rigidbody>().velocity = new Vector3((maxSpeed / 2) * myDirection, -maxSpeed, 0);
                     if (!switchedDirection & transform.position.y <= midPoint){
                         myDirection *= -1;
                         switchedDirection = true;
@@ -83,7 +83,7 @@ public class SquadronMove : MonoBehaviour, IStunnable {
 
     void OnCollisionEnter(Collision collision) {
         if (!stunned) {
-            rigidbody.AddForce(collision.contacts[0].normal * bumpForce, ForceMode.Impulse);
+            GetComponent<Rigidbody>().AddForce(collision.contacts[0].normal * bumpForce, ForceMode.Impulse);
             bumping = true;
             bumpTimer.Go(bumpTime);
             GameObject myBumpEffect = (GameObject)Instantiate(bumpEffect, transform.position, Quaternion.identity);

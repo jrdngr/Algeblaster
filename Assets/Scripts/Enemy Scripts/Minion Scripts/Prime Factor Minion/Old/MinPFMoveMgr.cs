@@ -91,7 +91,7 @@ public class MinPFMoveMgr : Minion {
 		if (!seesPlayer && !seesOtherShip)
 			Move ();
 		transform.position = new Vector3(Mathf.Clamp (transform.position.x, xMin-1, xMax+1), Mathf.Clamp (transform.position.y, yMin-1, yMax+1),0);
-		rigidbody.velocity = new Vector3(Mathf.Clamp(rigidbody.velocity.x, -maxSpeed, maxSpeed), Mathf.Clamp(rigidbody.velocity.y, -maxSpeed/2, maxSpeed/2), 0);
+		GetComponent<Rigidbody>().velocity = new Vector3(Mathf.Clamp(GetComponent<Rigidbody>().velocity.x, -maxSpeed, maxSpeed), Mathf.Clamp(GetComponent<Rigidbody>().velocity.y, -maxSpeed/2, maxSpeed/2), 0);
 	}
 
     void NewXDirection() {
@@ -126,7 +126,7 @@ public class MinPFMoveMgr : Minion {
 			currentDirectionY = -1;
             newYDirTimer.Reset();
 		}
-		rigidbody.AddForce(new Vector3(currentDirectionX * thrustForce, currentDirectionY * thrustForce, 0));
+		GetComponent<Rigidbody>().AddForce(new Vector3(currentDirectionX * thrustForce, currentDirectionY * thrustForce, 0));
 	}
 
 	// Attempts to move away from a given object.  Used for bullets and other ships.
@@ -138,7 +138,7 @@ public class MinPFMoveMgr : Minion {
 			moveX = 1;
 		if (bulletX < transform.position.x + .1f && bulletX > transform.position.x - .1f)
 			moveX = 0;
-		rigidbody.AddForce(new Vector3(moveX * thrustForce, currentDirectionY * thrustForce,0));
+		GetComponent<Rigidbody>().AddForce(new Vector3(moveX * thrustForce, currentDirectionY * thrustForce,0));
 	}
 	
 	// Attempts to follow the player.  Called from player sensor
@@ -150,7 +150,7 @@ public class MinPFMoveMgr : Minion {
 			moveX = -1;
 		if (playerX < transform.position.x + .1f && playerX > transform.position.x - .1f)
 			moveX = 0;
-		rigidbody.AddForce(new Vector3(moveX * thrustForce, currentDirectionY * thrustForce,0));
+		GetComponent<Rigidbody>().AddForce(new Vector3(moveX * thrustForce, currentDirectionY * thrustForce,0));
 	}
 
 }

@@ -60,9 +60,9 @@ public class MSPartFactor : MothershipPart {
     }
 
     void Update() {
-        if (factorActive && !numberLabel.renderer.enabled) {
+        if (factorActive && !numberLabel.GetComponent<Renderer>().enabled) {
             numberLabel.text = myFactor.ToString();
-            numberLabel.renderer.enabled = true;
+            numberLabel.GetComponent<Renderer>().enabled = true;
             myCore.GetComponent<MSPartDivide>().MyFactor /= myFactor;
             myCore.GetComponent<MSPartDivide>().ChangedValue();
             myNumber.GetComponent<MSPartNumerator>().MyValue /= myFactor;
@@ -113,7 +113,7 @@ public class MSPartFactor : MothershipPart {
             }
             else {
                 factorActive = false;
-                numberLabel.renderer.enabled = false;
+                numberLabel.GetComponent<Renderer>().enabled = false;
                 myShield.GetComponent<MSFactorShield>().Reset();
             }
         }

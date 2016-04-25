@@ -126,7 +126,7 @@ public class Mothership : MonoBehaviour {
                 denom = (GameObject)Instantiate(Resources.Load("Enemies/Mothership/Number/MSDenominator"), new Vector3(transform.position.x + 0.5f, transform.position.y - 1.5f, 0), Quaternion.identity);
             denom.transform.parent = transform;
             denom.GetComponent<MSPartDenominator>().MyShield.transform.localScale = new Vector3(centerX + 1, 1, 2);
-            denom.GetComponent<MSPartDenominator>().MyShield.particleSystem.emissionRate *= centerX;
+            denom.GetComponent<MSPartDenominator>().MyShield.GetComponent<ParticleSystem>().emissionRate *= centerX;
         }
         GetComponent<MSMove>().Center(centerX);
     }

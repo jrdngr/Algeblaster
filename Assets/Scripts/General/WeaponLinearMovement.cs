@@ -28,12 +28,12 @@ public class WeaponLinearMovement : MonoBehaviour {
         if (!movesUp)
             speed *= -1;
         startPos = transform.position.y;
-        rigidbody.velocity = new Vector3(0, speed, 0);
+        GetComponent<Rigidbody>().velocity = new Vector3(0, speed, 0);
     }
 
     void FixedUpdate() {
-        if (rigidbody.velocity.y != speed)
-            rigidbody.velocity = new Vector3(0, speed, 0);
+        if (GetComponent<Rigidbody>().velocity.y != speed)
+            GetComponent<Rigidbody>().velocity = new Vector3(0, speed, 0);
         if (distance >= distanceBeforeDestroyed)
             Destroy(this.gameObject);
         if  (transform.position.y >= yMax && movesUp)

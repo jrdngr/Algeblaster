@@ -44,8 +44,8 @@ public class MSMove : MonoBehaviour {
             yDir = 1;
         if (transform.position.y > yMax)
             yDir = -1;
-        rigidbody.AddForce(new Vector3(xForce * xDir, yForce * yDir, 0));
-        rigidbody.velocity = new Vector3(Mathf.Clamp(rigidbody.velocity.x, -maxSpeedX, maxSpeedX), Mathf.Clamp(rigidbody.velocity.y, -maxSpeedY, maxSpeedY), 0);
+        GetComponent<Rigidbody>().AddForce(new Vector3(xForce * xDir, yForce * yDir, 0));
+        GetComponent<Rigidbody>().velocity = new Vector3(Mathf.Clamp(GetComponent<Rigidbody>().velocity.x, -maxSpeedX, maxSpeedX), Mathf.Clamp(GetComponent<Rigidbody>().velocity.y, -maxSpeedY, maxSpeedY), 0);
     }
 
     public void Center(float offset) {

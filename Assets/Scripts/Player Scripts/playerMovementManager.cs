@@ -72,14 +72,14 @@ public class playerMovementManager : MonoBehaviour {
 
     void FixedUpdate() {
         Vector3 velocityLimits = new Vector3();
-        rigidbody.AddForce(new Vector3(xMovement * thrustForce, yMovement * thrustForce, 0));
+        GetComponent<Rigidbody>().AddForce(new Vector3(xMovement * thrustForce, yMovement * thrustForce, 0));
         
         //Enforce velocity limit
-        velocityLimits.x = Mathf.Clamp(rigidbody.velocity.x, -maxSpeed, maxSpeed);
-        velocityLimits.y = Mathf.Clamp(rigidbody.velocity.y, -maxSpeed, maxSpeed);
+        velocityLimits.x = Mathf.Clamp(GetComponent<Rigidbody>().velocity.x, -maxSpeed, maxSpeed);
+        velocityLimits.y = Mathf.Clamp(GetComponent<Rigidbody>().velocity.y, -maxSpeed, maxSpeed);
         velocityLimits.z = 0;        
         if (!dashing && !bumping)
-            rigidbody.velocity = velocityLimits;
+            GetComponent<Rigidbody>().velocity = velocityLimits;
 
         //Enforce player bounds
         transform.position = new Vector3(Mathf.Clamp(transform.position.x, myBounds.xMin, myBounds.xMax), Mathf.Clamp(transform.position.y, myBounds.yMin, myBounds.yMax), 0);
@@ -89,7 +89,7 @@ public class playerMovementManager : MonoBehaviour {
         if (collision.contacts[0].thisCollider.name != "Shield") {
             if ((collision.gameObject.CompareTag("Minion") || collision.gameObject.CompareTag("Mothership") || collision.gameObject.CompareTag("Fodder")) && !dashing) {
                 GameObject bump = (GameObject)Instantiate(bumpEffect, transform.position, Quaternion.identity);
-                rigidbody.AddForce(collision.contacts[0].normal * bumpForce, ForceMode.Impulse);
+                GetComponent<Rigidbody>().AddForce(collision.contacts[0].normal * bumpForce, ForceMode.Impulse);
                 bumping = true;
                 bumpTimer.Go(bumpTime);
                 Destroy(bump, 2f);
@@ -121,7 +121,7 @@ public class playerMovementManager : MonoBehaviour {
             else if (dir == DashDirection.right)
                 newDashEffect = (GameObject)Instantiate(dashEffect, rightDashEffect.transform.position, Quaternion.Euler(0,-90,0));
             Destroy(newDashEffect, 1f);
-            rigidbody.AddForce(new Vector3(dashForce, 0, 0) * (int)dir, ForceMode.Impulse);
+            GetComponent<Rigidbody>().AddForce(new Vector3(dashForce, 0, 0) * (int)dir, ForceMode.Impulse);
             dashing = true;
             dashDirection = (int)dir;
             dashReady = false;

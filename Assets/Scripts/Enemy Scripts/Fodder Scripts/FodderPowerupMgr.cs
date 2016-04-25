@@ -26,8 +26,8 @@ public class FodderPowerupMgr : MonoBehaviour {
 
         Collider[] colliders = Physics.OverlapSphere(pos, explosionRadius);
         foreach (Collider c in colliders) {
-            if (c.rigidbody && c.rigidbody.CompareTag("HealthOrb")) {
-                c.rigidbody.AddExplosionForce(explosionForce, pos, explosionRadius, 0, ForceMode.Force);
+            if (c.GetComponent<Rigidbody>() && c.GetComponent<Rigidbody>().CompareTag("HealthOrb")) {
+                c.GetComponent<Rigidbody>().AddExplosionForce(explosionForce, pos, explosionRadius, 0, ForceMode.Force);
             }
         }
     }

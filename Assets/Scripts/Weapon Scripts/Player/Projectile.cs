@@ -10,7 +10,7 @@ public class Projectile : MonoBehaviour {
     protected GameObject hitEffect;
 
     protected virtual void FixedUpdate() {
-        rigidbody.velocity = myVelocity;
+        GetComponent<Rigidbody>().velocity = myVelocity;
         if (transform.position.y > myBounds.yMax)
             Destroy(this.gameObject);
     }

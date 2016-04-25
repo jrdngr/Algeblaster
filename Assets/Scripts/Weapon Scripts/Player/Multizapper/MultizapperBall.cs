@@ -42,7 +42,7 @@ public class MultizapperBall : Projectile {
 
     protected override void FixedUpdate() {
         if (!wasTethered) 
-            rigidbody.velocity = myVelocity;
+            GetComponent<Rigidbody>().velocity = myVelocity;
         if (!hasTether && 
             (transform.position.y > myBounds.yMax || transform.position.y < myBounds.yMin ||
             transform.position.x > myBounds.xMax || transform.position.x < myBounds.xMin))

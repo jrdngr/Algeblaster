@@ -18,16 +18,16 @@ public class Star : MonoBehaviour {
 		transform.localScale = new Vector3(scale,scale,scale);
 		switch (color){
 		case StarColor.white:
-			renderer.material.color = Color.white;
+			GetComponent<Renderer>().material.color = Color.white;
 			break;
 		case StarColor.blue:
-			renderer.material.color = new Color(0.7f, 0.9f, 1f, 1f);
+			GetComponent<Renderer>().material.color = new Color(0.7f, 0.9f, 1f, 1f);
 			break;
 		case StarColor.red:
-			renderer.material.color = new Color(1f, 0.7f, 0.7f, 1f);
+			GetComponent<Renderer>().material.color = new Color(1f, 0.7f, 0.7f, 1f);
 			break;
 		default:
-			renderer.material.color = Color.white;
+			GetComponent<Renderer>().material.color = Color.white;
 			break;
 		}
 	}

@@ -43,9 +43,9 @@ public class OrbMove : MonoBehaviour, IStunnable {
                 transform.LookAt(playerShip.transform);
             }
             forceVector /= forceVector.magnitude;
-            rigidbody.AddForce(forceVector * thrustForce);
+            GetComponent<Rigidbody>().AddForce(forceVector * thrustForce);
             if (!bumping)
-                rigidbody.velocity = new Vector3(Mathf.Clamp(rigidbody.velocity.x, -maxSpeed, maxSpeed), Mathf.Clamp(rigidbody.velocity.y, -maxSpeed, maxSpeed), 0);
+                GetComponent<Rigidbody>().velocity = new Vector3(Mathf.Clamp(GetComponent<Rigidbody>().velocity.x, -maxSpeed, maxSpeed), Mathf.Clamp(GetComponent<Rigidbody>().velocity.y, -maxSpeed, maxSpeed), 0);
         }
     }
 
@@ -55,7 +55,7 @@ public class OrbMove : MonoBehaviour, IStunnable {
 
     void OnCollisionEnter(Collision collision) {
         if (!stunned) {
-            rigidbody.AddForce(collision.contacts[0].normal * bumpForce, ForceMode.Impulse);
+            GetComponent<Rigidbody>().AddForce(collision.contacts[0].normal * bumpForce, ForceMode.Impulse);
             bumping = true;
             bumpTimer.Go(bumpTime);
             GameObject myBumpEffect = (GameObject)Instantiate(bumpEffect, transform.position, Quaternion.identity);

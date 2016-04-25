@@ -71,8 +71,8 @@ public class playerShieldManager : MonoBehaviour {
             if (hasShieldMagnet) {
                 Collider[] colliders = Physics.OverlapSphere(transform.position, shieldMagnetRadius);
                 foreach (Collider c in colliders) {
-                    if (c.rigidbody && (c.rigidbody.CompareTag("HealthOrb"))) {
-                        c.rigidbody.AddExplosionForce(-shieldMagnetForce, transform.position, shieldMagnetRadius, 0, ForceMode.Force);
+                    if (c.GetComponent<Rigidbody>() && (c.GetComponent<Rigidbody>().CompareTag("HealthOrb"))) {
+                        c.GetComponent<Rigidbody>().AddExplosionForce(-shieldMagnetForce, transform.position, shieldMagnetRadius, 0, ForceMode.Force);
                     }
                 }
             }

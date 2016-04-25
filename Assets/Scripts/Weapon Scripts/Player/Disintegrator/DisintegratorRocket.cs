@@ -33,7 +33,7 @@ public class DisintegratorRocket : Projectile {
         myBooster.SetActive(false);
         myAnger = transform.Find("Rocket Anger!").gameObject;
         myAnger.SetActive(false);
-        rigidbody.velocity = myVelocity;
+        GetComponent<Rigidbody>().velocity = myVelocity;
         newTargetTimer = gameObject.AddComponent<Timer>();
         newTargetTimer.Trigger += ResetTargetCheck;
         angerTimer = gameObject.AddComponent<Timer>();
@@ -53,7 +53,7 @@ public class DisintegratorRocket : Projectile {
             FindTarget();
         //Apply thrust if the rocket is dumb or has no target
         if (!homing || (homing && myTarget == null)) {
-            rigidbody.AddForce(new Vector3(0, acceleration, 0));
+            GetComponent<Rigidbody>().AddForce(new Vector3(0, acceleration, 0));
             if (transform.position.y > myBounds.yMax + keepMyTrail)
                 Destroy(this.gameObject);
             //Rotate to face forward
@@ -70,26 +70,26 @@ public class DisintegratorRocket : Projectile {
             //If the rocket is pointed in the direction of the target within a certain range, apply thrust
             //If enough time has elapsed, add corrections to make it more accurate
             if (Mathf.Abs(Vector3.Angle(transform.forward, targetVector)) <= homingRocketBoostRange) {
-                rigidbody.AddForce(targetVector * homingAcceleration);
+                GetComponent<Rigidbody>().AddForce(targetVector * homingAcceleration);
                 myBooster.SetActive(true);
                 if (angry)
-                    rigidbody.AddForce(myTarget.rigidbody.velocity * lateralThrustCorrection);
+                    GetComponent<Rigidbody>().AddForce(myTarget.GetComponent<Rigidbody>().velocity * lateralThrustCorrection);
             }
             //If the rocket is out of range of the target, quickly slow it down to its minimum speed until it's facing the target
-            else if (Vector3.Distance(transform.position, myTarget.position) >= homingBrakeDistance && rigidbody.velocity.magnitude >= minimumBrakeSpeed && !angry) {
-                rigidbody.AddForce(-Vector3.Normalize(rigidbody.velocity) * homingAcceleration);
-                rigidbody.AddForce(transform.forward * driftAcceleration);
+            else if (Vector3.Distance(transform.position, myTarget.position) >= homingBrakeDistance && GetComponent<Rigidbody>().velocity.magnitude >= minimumBrakeSpeed && !angry) {
+                GetComponent<Rigidbody>().AddForce(-Vector3.Normalize(GetComponent<Rigidbody>().velocity) * homingAcceleration);
+                GetComponent<Rigidbody>().AddForce(transform.forward * driftAcceleration);
             }
             //If the rocket is out of range and at or below its minimum speed, apply forward thrust for driftu
-            else if (Vector3.Distance(transform.position, myTarget.position) >= homingBrakeDistance && rigidbody.velocity.magnitude <= minimumBrakeSpeed && !angry) {
-                rigidbody.AddForce(transform.forward * driftAcceleration);
+            else if (Vector3.Distance(transform.position, myTarget.position) >= homingBrakeDistance && GetComponent<Rigidbody>().velocity.magnitude <= minimumBrakeSpeed && !angry) {
+                GetComponent<Rigidbody>().AddForce(transform.forward * driftAcceleration);
             }
             else
                 myBooster.SetActive(false);
 
             //If angry, come to a complete stop to reorient
-            if (angry && (Mathf.Abs(Vector3.Angle(transform.forward, targetVector)) >= homingRocketBoostRange || rigidbody.velocity.magnitude >= minimumBrakeSpeed)) {
-                rigidbody.AddForce(-Vector3.Normalize(rigidbody.velocity) * homingAcceleration);
+            if (angry && (Mathf.Abs(Vector3.Angle(transform.forward, targetVector)) >= homingRocketBoostRange || GetComponent<Rigidbody>().velocity.magnitude >= minimumBrakeSpeed)) {
+                GetComponent<Rigidbody>().AddForce(-Vector3.Normalize(GetComponent<Rigidbody>().velocity) * homingAcceleration);
             }
 
             //Rotate to face the target smoothly
@@ -109,7 +109,7 @@ public class DisintegratorRocket : Projectile {
             GameObject myEffect = (GameObject)Instantiate(hitEffect, transform.position, Quaternion.identity);
             Collider[] colliders = Physics.OverlapSphere(transform.position, blastRadius);
             foreach (Collider c in colliders) {
-                if (c.rigidbody && c.rigidbody.CompareTag("Fodder")) {
+                if (c.GetComponent<Rigidbody>() && c.GetComponent<Rigidbody>().CompareTag("Fodder")) {
                     WeaponHit blastHit = hit;
                     if ((int)Vector3.Distance(transform.position, c.transform.position) > 0)
                         blastHit.damage /= (int)Vector3.Distance(transform.position, c.transform.position);
@@ -126,7 +126,7 @@ public class DisintegratorRocket : Projectile {
     void FindTarget() {
         Collider[] colliders = Physics.OverlapSphere(transform.position, homingRadius);
         foreach (Collider c in colliders) {
-            if (c.rigidbody && (c.rigidbody.CompareTag("Fodder") || c.rigidbody.CompareTag("Minion"))) {
+            if (c.GetComponent<Rigidbody>() && (c.GetComponent<Rigidbody>().CompareTag("Fodder") || c.GetComponent<Rigidbody>().CompareTag("Minion"))) {
                 myTarget = c.transform;
             }
         }

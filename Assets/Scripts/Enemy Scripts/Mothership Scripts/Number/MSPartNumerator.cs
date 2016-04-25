@@ -72,7 +72,7 @@ public class MSPartNumerator : MothershipPart {
         myValue = Random.Range(2, 10);
         initialValue = myValue;
         healthMgr.MaxHP = hpTrigger;
-        startColor = renderer.material.GetColor("_Color");
+        startColor = GetComponent<Renderer>().material.GetColor("_Color");
     }
 
     protected override void Start() {
@@ -107,10 +107,10 @@ public class MSPartNumerator : MothershipPart {
             berserkTimer.Go(berserkTickTime);
         }
         if (isBerserk) {
-            renderer.material.SetColor("_Color", Color.red);
+            GetComponent<Renderer>().material.SetColor("_Color", Color.red);
             if (myValue == initialValue) {
                 isBerserk = false;
-                renderer.material.SetColor("_Color", startColor);
+                GetComponent<Renderer>().material.SetColor("_Color", startColor);
             }
             if (berserkTickReady) {
                 myValue -= 1;

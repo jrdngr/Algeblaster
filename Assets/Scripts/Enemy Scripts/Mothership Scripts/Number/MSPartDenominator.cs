@@ -38,7 +38,7 @@ public class MSPartDenominator : MothershipPart {
                 codeMgr.MultiplyValue(myValue);
                 GameObject shieldPop = (GameObject)Instantiate(shieldPopEffect, myShield.transform.position, Quaternion.identity);
                 shieldPop.transform.localScale = new Vector3(transform.parent.GetComponent<Mothership>().CenterX + 1, 1, 2);
-                shieldPop.particleSystem.enableEmission = true;
+                shieldPop.GetComponent<ParticleSystem>().enableEmission = true;
                 GameObject explosion = (GameObject)Instantiate(deathEffect, transform.position, Quaternion.identity);
                 Destroy(explosion, 2f);
                 Destroy(shieldPop, 2f);

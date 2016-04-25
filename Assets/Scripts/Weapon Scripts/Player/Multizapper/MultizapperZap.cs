@@ -11,7 +11,7 @@ public class MultizapperZap : MonoBehaviour {
 
     void FixedUpdate() {
         if (myTarget != null)
-            rigidbody.velocity = (myTarget.transform.position - transform.position) * zapSpeed;
+            GetComponent<Rigidbody>().velocity = (myTarget.transform.position - transform.position) * zapSpeed;
         if (numberOfChains <= 0)
             Destroy(this.gameObject);
     }
@@ -24,7 +24,7 @@ public class MultizapperZap : MonoBehaviour {
             if (numberOfChains > 0) {
                 Collider[] colliders = Physics.OverlapSphere(transform.position, chainRange);
                 foreach (Collider c in colliders) {
-                    if (c.rigidbody && c.rigidbody.CompareTag("Fodder") && c.gameObject != other.gameObject) {
+                    if (c.GetComponent<Rigidbody>() && c.GetComponent<Rigidbody>().CompareTag("Fodder") && c.gameObject != other.gameObject) {
                         myTarget = c.transform;
                     }
                 }

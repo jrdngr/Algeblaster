@@ -51,7 +51,7 @@ public class MultizapperLauncher : Weapon {
             projectileColor = (WeaponHit.WeaponColor)playerWeaponManager.CurrentColor;
             GameObject myBullet = (GameObject)Instantiate(projectile, projectileSpawnPosition.transform.position, Quaternion.identity);
             if (hasTether)
-                myBullet.GetComponent<SpringJoint>().connectedBody = transform.parent.rigidbody;
+                myBullet.GetComponent<SpringJoint>().connectedBody = transform.parent.GetComponent<Rigidbody>();
             else
                 myBullet.GetComponent<SpringJoint>().breakForce = 0;
             myBullet.GetComponent<Projectile>().SetProperties(projectileSpeed, projectileBounds, projectileVelocity, projectileDamage, projectileFrequency, projectileType, projectileColor, projectileHitEffect);

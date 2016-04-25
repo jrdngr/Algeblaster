@@ -4,7 +4,7 @@ using System.Collections;
 public class EnemyBullet : EnemyWeapon {
 
     void FixedUpdate() {
-        rigidbody.velocity = Velocity;
+        GetComponent<Rigidbody>().velocity = Velocity;
     }
 
     void OnTriggerEnter(Collider collision) {
